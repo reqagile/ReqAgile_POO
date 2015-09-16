@@ -1,6 +1,8 @@
-#ReqAgile_POO
+#ReqAgile
 
 
-//TODO: escrever uma pequena descrição do projeto
+Projeto da disciplina de Programação Orientada a Objetos - UnB/CiC - 2/2015
+
+
 
 
