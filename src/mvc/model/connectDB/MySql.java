@@ -33,7 +33,7 @@ public abstract class MySql{
 		String driver="com.mysql.jdbc.Driver";
 		String server="jdbc:mysql://localhost:3306/reqagile";
 		String user="root";
-		//Trocar a password pela a sua.
+		//Trocar a password pela a sua do BD.
 		String password="ReqAgilePOO";
 		
 		try{
@@ -62,6 +62,7 @@ public abstract class MySql{
 		}
 		else{
 			return false;
+			
 		}
 	}
 }

@@ -36,7 +36,6 @@ public class SqlUser implements ConnectionUser {
 	
 	
 	@Override
-	//Comoe retornar um vetor de string?
 	//TODO retornar um vetor de string com todas informações do registro; 
 	public String selectRegisty(int iduser) {
 		String query = "SELECT FROM user WHERE iduser ="+iduser+";";

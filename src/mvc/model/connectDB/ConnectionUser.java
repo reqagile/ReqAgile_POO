@@ -21,13 +21,14 @@ public interface ConnectionUser {
 	public boolean insertRegisty(String name,String login,String password,String email);
 
 	
-
+ 
 	/**
 	 * Selecionar um registro pelo id
 	 *  do usuario
 	 *  
 	 *  @param iduser
-	 *  @return
+	 *  @return String
+	 *  	TODO array de string
 	 */
 	public String selectRegisty(int iduser);
 	
