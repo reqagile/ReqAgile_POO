@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author Eduardo Scartezini
  *
  */
-public abstract class MySql{
+public abstract class MySql {
 	
 	public static Statement stm=null;
 	public static ResultSet rs=null;
@@ -28,7 +28,7 @@ public abstract class MySql{
 	 * @return boolean
 	 * 		Se a conectado corretamente ao BD
 	 */
-	public static boolean connect(){
+	public static boolean Connect(){
 		
 		String driver="com.mysql.jdbc.Driver";
 		String server="jdbc:mysql://localhost:3306/reqagile";
@@ -56,7 +56,7 @@ public abstract class MySql{
 	 * com o mysql;
 	 * @return boolean
 	 */
-	public static boolean isConnect(){
+	public static boolean ThisConnect(){
 		if(conn!=null){
 			return true;
 		}

@@ -18,7 +18,7 @@ public interface ConnectionUser {
 	 * @return boolean
 	 * 		retorna se foi inserido corretamente;
 	 */
-	public boolean insertRegisty(String name,String login,String password,String email);
+	public boolean InsertRegisty(String name,String login,String password,String email);
 
 	
 
@@ -29,7 +29,7 @@ public interface ConnectionUser {
 	 *  @param iduser
 	 *  @return
 	 */
-	public String selectRegisty(int iduser);
+	public String SelectRegisty(int iduser);
 	
 	/**
 	 * Selecionar um registro pelo login do usuario
@@ -37,7 +37,7 @@ public interface ConnectionUser {
 	 * @param login
 	 * @return
 	 */
-	public String selectRegisty(String login);
+	public String SelectRegisty(String login);
 	
 	
 	/**
@@ -46,13 +46,13 @@ public interface ConnectionUser {
 	 * @return	boolean
 	 * 		retorna se foi deletado corretamente
 	 */
-	public boolean deleteRegisty(int iduser);
+	public boolean DeleteRegisty(int iduser);
 	
 	/**
 	 * 	Altera algum registro da tabela user
 	 * @return boolean
 	 * 		retorna se foi alterado corretamente
 	 */
-	public boolean alterRegisty(int iduser);
+	public boolean AlterRegisty(int iduser);
 
 }
