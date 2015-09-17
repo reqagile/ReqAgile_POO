@@ -1,6 +1,5 @@
 package mvc.model.connectDB;
 
-import java.sql.SQLException;
 
 /**
  * Classe que implementa a conexão com a tabela user 
@@ -14,7 +13,9 @@ public class SqlUser implements ConnectionUser {
 	/**
 	 * Construtor do SqlUser. 
 	 * 
-	 * 		Se não estiver conectado ao DataBase ele conecta.
+	 * 		Verifica se a conexão com Data Base,
+	 * 	caso não esteja conectado ele tenta conectar.
+	 * 
 	 */
 	public SqlUser(){
 		int i = 0;
@@ -24,55 +25,42 @@ public class SqlUser implements ConnectionUser {
 		}
 	}
 	@Override
-	public boolean insertRegisty(String name, String login, String password, String email) {
+	public void insertRegisty(String name, String login, String password, String email) throws java.sql.SQLException{
 		String query = "IMSERT INTO user VALUES "+"(NULL,'"+name+"','"+login+"','"+password+"','"+email+"');";
-		try{
-			MySql.stm.executeUpdate(query);
-			return true;
-		}catch(SQLException e){
-			return false;
-		}
+		MySql.stm.executeUpdate(query);
 	}
 	
 	
 	@Override 
-	public String[] selectRegisty(int iduser) {
+	public String[] selectRegisty(int iduser) throws java.sql.SQLException{
 		String query = "SELECT FROM user WHERE iduser ="+iduser+";";
 		String registy[] = new String[5];
-		try {
-			MySql.stm.executeUpdate(query);
-			if(MySql.rs.next()){
-				registy[0] = MySql.rs.getString("iduser");
-				registy[1] = MySql.rs.getString("name");
-				registy[2] = MySql.rs.getString("login");
-				registy[3] = MySql.rs.getString("password");
-				registy[4] = MySql.rs.getString("email");
-				return registy;
-			}else{
-				return null;
-			}
-		} catch (SQLException e) {
+		MySql.stm.executeUpdate(query);
+		if(MySql.rs.next()){
+			registy[0] = MySql.rs.getString("iduser");
+			registy[1] = MySql.rs.getString("name");
+			registy[2] = MySql.rs.getString("login");
+			registy[3] = MySql.rs.getString("password");
+			registy[4] = MySql.rs.getString("email");
+			return registy;
+		}else{
 			return null;
 		}
 	}
 	
 	@Override
-	public String[] selectRegisty(String login) {
+	public String[] selectRegisty(String login) throws java.sql.SQLException{
 		String query = "SELECT FROM user WHERE login ='"+login+"';";
 		String registy[] = new String[5];
-		try {
-			MySql.stm.executeUpdate(query);
-			if(MySql.rs.next()){
-				registy[0] = MySql.rs.getString("iduser");
-				registy[1] = MySql.rs.getString("name");
-				registy[2] = MySql.rs.getString("login");
-				registy[3] = MySql.rs.getString("password");
-				registy[4] = MySql.rs.getString("email");
-				return registy;
-			}else{
-				return null;
-			}
-		} catch (SQLException e) {
+		MySql.stm.executeUpdate(query);
+		if(MySql.rs.next()){
+			registy[0] = MySql.rs.getString("iduser");
+			registy[1] = MySql.rs.getString("name");
+			registy[2] = MySql.rs.getString("login");
+			registy[3] = MySql.rs.getString("password");
+			registy[4] = MySql.rs.getString("email");
+			return registy;
+		}else{
 			return null;
 		}
 	}
@@ -80,15 +68,15 @@ public class SqlUser implements ConnectionUser {
 	
 
 	@Override
-	public boolean deleteRegisty(int iduser) {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteRegisty(int iduser) throws java.sql.SQLException{
+		String query = "DELETE FROM user WHERE iduser = "+iduser+";";
+		MySql.stm.executeUpdate(query);
 	}
 
 	@Override
-	public boolean alterRegisty(int iduser) {
-		// TODO Auto-generated method stub
-		return false;
+	public void alterRegisty(int iduser,  String attribute, String value) throws java.sql.SQLException{
+		String query = "UPDATE user SET "+attribute+"= \""+value+"\" WHERE iduser = "+iduser+";";
+		MySql.stm.executeUpdate(query);
 	}
 	
 }

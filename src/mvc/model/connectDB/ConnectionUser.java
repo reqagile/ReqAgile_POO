@@ -12,13 +12,17 @@ package mvc.model.connectDB;
  *
  */
 public interface ConnectionUser {
+	
 	/**
-	 * 	Insere um registro na tabela user
+	 * Insere um novo registro na tabela user
 	 * 
-	 * @return boolean
-	 * 		retorna se foi inserido corretamente;
+	 * @param name
+	 * @param login
+	 * @param password
+	 * @param email
+	 * @throws java.sql.SQLException
 	 */
-	public boolean insertRegisty(String name,String login,String password,String email);
+	public void insertRegisty(String name,String login,String password,String email) throws java.sql.SQLException;
 
 	
  
@@ -32,11 +36,12 @@ public interface ConnectionUser {
 	 *  	0 - iduser;
 	 *  	1 - name;
 	 *  	2 - login;
-	 *  	3 - passwor;
+	 *  	3 - password;
 	 *  	4 - email;
+	 *  @throws java.sql.SQLException
 	 *  	
 	 */
-	public String[] selectRegisty(int iduser);
+	public String[] selectRegisty(int iduser) throws java.sql.SQLException;
 	
 	/**
 	 * Selecionar um registro pelo login do usuario
@@ -48,25 +53,32 @@ public interface ConnectionUser {
 	 *  	0 - iduser;
 	 *  	1 - name;
 	 *  	2 - login;
-	 *  	3 - passwor;
+	 *  	3 - password;
 	 *  	4 - email;
+	 *  @throws java.sql.SQLException
 	 */
-	public String[] selectRegisty(String login);
+	public String[] selectRegisty(String login) throws java.sql.SQLException;
 	
 	
 	/**
-	 * 	Deleta algum registro da tabela 
-	 * user	
-	 * @return	boolean
-	 * 		retorna se foi deletado corretamente
+	 * Deleta um registro da tabela user
+	 * 
+	 * @param iduser
+	 * @throws java.sql.SQLException
 	 */
-	public boolean deleteRegisty(int iduser);
+	public void deleteRegisty(int iduser)throws java.sql.SQLException;
+	
 	
 	/**
-	 * 	Altera algum registro da tabela user
-	 * @return boolean
-	 * 		retorna se foi alterado corretamente
+	 * Altera um certo atributo de um registro existente;
+	 * 
+	 * @param iduser
+	 * @param attribute
+	 * 		atributo à ser alterado
+	 * @param value
+	 * 		valor à ser atribuido  
+	 * @throws java.sql.SQLException
 	 */
-	public boolean alterRegisty(int iduser);
+	public void alterRegisty(int iduser, String attribute, String value) throws java.sql.SQLException;
 
 }

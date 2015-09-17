@@ -39,8 +39,7 @@ public abstract class MySql{
 			Class.forName(driver);
 			conn = DriverManager.getConnection(server,user,password);
 			stm = conn.createStatement();
-		}
-		catch(Exception e){
+		}catch(Exception e){
 			return false;
 		}
 		
