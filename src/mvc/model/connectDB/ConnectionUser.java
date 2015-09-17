@@ -26,19 +26,32 @@ public interface ConnectionUser {
 	 * Selecionar um registro pelo id
 	 *  do usuario
 	 *  
-	 *  @param iduser
-	 *  @return String
-	 *  	TODO array de string
+	 * @param iduser
+	 * @return String[]
+	 *  	Retorna um array com todos os atributos do registro
+	 *  	0 - iduser;
+	 *  	1 - name;
+	 *  	2 - login;
+	 *  	3 - passwor;
+	 *  	4 - email;
+	 *  	
 	 */
-	public String selectRegisty(int iduser);
+	public String[] selectRegisty(int iduser);
 	
 	/**
 	 * Selecionar um registro pelo login do usuario
 	 * 
 	 * @param login
-	 * @return
+	 * @return String[]
+	 *
+	 *  	Retorna um array com todos os atributos do registro
+	 *  	0 - iduser;
+	 *  	1 - name;
+	 *  	2 - login;
+	 *  	3 - passwor;
+	 *  	4 - email;
 	 */
-	public String selectRegisty(String login);
+	public String[] selectRegisty(String login);
 	
 	
 	/**

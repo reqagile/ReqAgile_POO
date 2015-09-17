@@ -33,7 +33,6 @@ public abstract class MySql{
 		String driver="com.mysql.jdbc.Driver";
 		String server="jdbc:mysql://localhost:3306/reqagile";
 		String user="root";
-		//Trocar a password pela a sua do BD.
 		String password="ReqAgilePOO";
 		
 		try{
@@ -54,9 +53,10 @@ public abstract class MySql{
 	/**
 	 * 	Verifica se o banco de dados esta conectado corretamente
 	 * com o mysql;
+	 * 
 	 * @return boolean
 	 */
-	public static boolean isConnect(){
+	public static boolean isConnected(){
 		if(conn!=null){
 			return true;
 		}
