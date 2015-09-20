@@ -22,7 +22,7 @@ public interface ConnectionUser {
 	 * @param email
 	 * @throws java.sql.SQLException
 	 */
-	public void insertRegisty(String name,String login,String password,String email) throws java.sql.SQLException;
+	public void insertRegistry(String name,String login,String password,String email) throws java.sql.SQLException;
 
 	
  
@@ -41,7 +41,7 @@ public interface ConnectionUser {
 	 *  @throws java.sql.SQLException
 	 *  	
 	 */
-	public String[] selectRegisty(int iduser) throws java.sql.SQLException;
+	public String[] selectRegistry(int iduser) throws java.sql.SQLException;
 	
 	/**
 	 * Selecionar um registro pelo login do usuario
@@ -57,7 +57,7 @@ public interface ConnectionUser {
 	 *  	4 - email;
 	 *  @throws java.sql.SQLException
 	 */
-	public String[] selectRegisty(String login) throws java.sql.SQLException;
+	public String[] selectRegistry(String login) throws java.sql.SQLException;
 	
 	
 	/**
@@ -66,7 +66,7 @@ public interface ConnectionUser {
 	 * @param iduser
 	 * @throws java.sql.SQLException
 	 */
-	public void deleteRegisty(int iduser)throws java.sql.SQLException;
+	public void deleteRegistry(int iduser)throws java.sql.SQLException;
 	
 	
 	/**
@@ -79,6 +79,6 @@ public interface ConnectionUser {
 	 * 		valor à ser atribuido  
 	 * @throws java.sql.SQLException
 	 */
-	public void alterRegisty(int iduser, String attribute, String value) throws java.sql.SQLException;
+	public void alterRegistry(int iduser, String attribute, String value) throws java.sql.SQLException;
 
 }
