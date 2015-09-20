@@ -42,8 +42,6 @@ public abstract class MySql{
 		}catch(Exception e){
 			return false;
 		}
-		
-	
 		return true;
 	}
 	
