@@ -24,6 +24,8 @@ public class SqlUser implements ConnectionUser {
 			i++;
 		}
 	}
+	
+	
 	@Override
 	public void insertRegistry(String name, String login, String password, String email) throws java.sql.SQLException{
 		String query = "INSERT INTO user VALUES "+"(NULL,'"+name+"','"+login+"','"+password+"','"+email+"');";
@@ -35,34 +37,45 @@ public class SqlUser implements ConnectionUser {
 	public String[] selectRegistry(int iduser) throws java.sql.SQLException{
 		String query = "SELECT * FROM user WHERE iduser ="+iduser+";";
 		String Registry[] = new String[5];
-		MySql.stm.executeUpdate(query);
+		
+		MySql.rs = MySql.stm.executeQuery(query);
+		MySql.stm = MySql.conn.createStatement();
+		
 		if(MySql.rs.next()){
 			Registry[0] = MySql.rs.getString("iduser");
 			Registry[1] = MySql.rs.getString("name");
 			Registry[2] = MySql.rs.getString("login");
 			Registry[3] = MySql.rs.getString("password");
 			Registry[4] = MySql.rs.getString("email");
-			return Registry;
 		}else{
 			return null;
 		}
+		
+		return Registry;
 	}
 	
 	@Override
 	public String[] selectRegistry(String login) throws java.sql.SQLException{
+		
 		String query = "SELECT * FROM user WHERE login ='"+login+"';";
 		String Registry[] = new String[5];
-		MySql.stm.executeUpdate(query);
+		
+		MySql.rs = MySql.stm.executeQuery(query);
+		MySql.stm = MySql.conn.createStatement();
+	
 		if(MySql.rs.next()){
+		
 			Registry[0] = MySql.rs.getString("iduser");
 			Registry[1] = MySql.rs.getString("name");
 			Registry[2] = MySql.rs.getString("login");
 			Registry[3] = MySql.rs.getString("password");
 			Registry[4] = MySql.rs.getString("email");
-			return Registry;
+		
 		}else{
 			return null;
 		}
+		
+		return Registry;
 	}
 	
 	
