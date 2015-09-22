@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import mvc.model.connectDB.MySql;
@@ -23,6 +24,14 @@ public class DataBaseTests {
 	
 	
 	private SqlUser user = new SqlUser();
+	
+	
+	@Before
+	public void clearAutoIncrment() throws SQLException{
+		String query = "ALTER TABLE user AUTO_INCREMENT = 1";
+		MySql.stm.executeUpdate(query);
+	}
+	
 	
 	@Test
 	public void testInsertRegistry(){
@@ -71,7 +80,7 @@ public class DataBaseTests {
 	@Test
 	public void testDeleteRegistry(){
 		try{
-			user.deleteRegistry(9);
+			user.deleteRegistry(1);
 		}catch(SQLException e){
 			assertTrue(false);
 		}
