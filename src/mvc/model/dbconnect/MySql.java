@@ -1,4 +1,4 @@
-package mvc.model.connectDB;
+package mvc.model.dbconnect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

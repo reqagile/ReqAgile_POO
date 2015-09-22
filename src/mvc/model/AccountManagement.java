@@ -1,16 +1,16 @@
-package mvc.model.accountmanagement;
+package mvc.model;
 
-import mvc.model.connectDB.ConnectionUser;
+import mvc.model.dbconnect.ConnectionTable;
 
 public abstract class AccountManagement {
 	
-	private static ConnectionUser dbConnection;
+	private static ConnectionTable dbConnection;
 
-	public static ConnectionUser getDbConnection() {
+	public static ConnectionTable getDbConnection() {
 		return dbConnection;
 	}
 
-	public static void setDbConnection(ConnectionUser dbConnection) {
+	public static void setDbConnection(ConnectionTable dbConnection) {
 		AccountManagement.dbConnection = dbConnection;
 	}
 	

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import org.junit.Before;
 import org.junit.Test;
 
-import mvc.model.connectDB.MySql;
-import mvc.model.connectDB.SqlUser;
+import mvc.model.dbconnect.MySql;
+import mvc.model.dbconnect.SqlUser;
 
 public class DataBaseTests {
 	

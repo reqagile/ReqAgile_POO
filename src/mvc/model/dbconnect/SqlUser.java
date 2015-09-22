@@ -1,4 +1,4 @@
-package mvc.model.connectDB;
+package mvc.model.dbconnect;
 
 
 /**
@@ -8,7 +8,7 @@ package mvc.model.connectDB;
  * @author Eduardo Scartezini
  *
  */
-public class SqlUser implements ConnectionUser {	
+public class SqlUser implements ConnectionTable {	
 	
 	/**
 	 * Construtor do SqlUser. 

@@ -1,4 +1,4 @@
-package mvc.model.connectDB;
+package mvc.model.dbconnect;
 
 
 /**
@@ -11,7 +11,7 @@ package mvc.model.connectDB;
  * @author Eduardo Scartezini
  *
  */
-public interface ConnectionUser {
+public interface ConnectionTable {
 	
 	/**
 	 * Insere um novo registro na tabela user
