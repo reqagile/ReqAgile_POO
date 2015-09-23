@@ -1,8 +1,10 @@
 package mvc.model;
 
+import java.sql.SQLException;
+
 import mvc.model.dbconnect.ConnectionTable;
 
-public abstract class AccountManagement {
+public abstract class AccountManagement implements AccountOperations {
 	
 	private static ConnectionTable dbConnection;
 
@@ -20,13 +22,25 @@ public abstract class AccountManagement {
 	 * @param password senha informada pelo usuário
 	 * @throws java.sql.SQLException
 	 */
-	public boolean authenticateUser(String login, String password) throws java.sql.SQLException {
-		String[] userInfo = dbConnection.selectRegistry(login);
-		if(userInfo != null && password.equals(userInfo[3])){				
-			return true;
-		}
-		else {
-			return false;
+	public boolean authenticateUser(String login, String password) throws AccountException {
+		String[] userInfo;
+		try {
+			userInfo = dbConnection.selectRegistry(login);
+			return (userInfo != null && password.equals(userInfo[3]));
+		} catch (SQLException e) {
+			//TODO: tratar excessão de maneiras diferentes de acordo o conteúdo de e.
+			throw new AccountException("Database Failure");
 		}
 	}
+	
+	public void CreateNewUser(String[] userData) throws AccountException {
+		//TODO: verificar o número de campos em String.
+		try {
+			AccountManagement.dbConnection.insertRegistry(userData[0], userData[1], userData[2], userData[3]);
+		} catch (SQLException e) {
+			//TODO: tratar excessão de maneiras diferentes de acordo o conteúdo de e.
+			throw new AccountException("Database Failure");
+		}
+	}
+
 }
