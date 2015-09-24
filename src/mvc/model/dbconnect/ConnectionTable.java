@@ -1,5 +1,8 @@
 package mvc.model.dbconnect;
 
+import java.sql.SQLException;
+import mvc.model.AccountException;
+import mvc.model.UserAccount;
 
 /**
  * Interface que define como sera dada
@@ -22,7 +25,7 @@ public interface ConnectionTable {
 	 * @param email
 	 * @throws java.sql.SQLException
 	 */
-	public void insertRegistry(String name,String login,String password,String email) throws java.sql.SQLException;
+	public void insertRegistry(UserAccount account) throws java.sql.SQLException;
 
 	
  
@@ -41,8 +44,7 @@ public interface ConnectionTable {
 	 *  @throws java.sql.SQLException
 	 *  	
 	 */
-	public String[] selectRegistry(int iduser) throws java.sql.SQLException;
-	
+	public UserAccount selectRegistry(int iduser) throws SQLException, AccountException;	
 	/**
 	 * Selecionar um registro pelo login do usuario
 	 * 
@@ -57,7 +59,7 @@ public interface ConnectionTable {
 	 *  	4 - email;
 	 *  @throws java.sql.SQLException
 	 */
-	public String[] selectRegistry(String login) throws java.sql.SQLException;
+	public UserAccount selectRegistry(String login) throws java.sql.SQLException, AccountException;
 	
 	
 	/**
@@ -79,6 +81,6 @@ public interface ConnectionTable {
 	 * 		valor à ser atribuido  
 	 * @throws java.sql.SQLException
 	 */
-	public void alterRegistry(int iduser, String attribute, String value) throws java.sql.SQLException;
+	public void alterRegistry(UserAccount account) throws java.sql.SQLException;
 
 }

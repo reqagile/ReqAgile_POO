@@ -1,5 +1,8 @@
 package mvc.model.dbconnect;
 
+import java.sql.SQLException;
+import mvc.model.AccountException;
+import mvc.model.UserAccount;
 
 /**
  * Classe que implementa a conexão com a tabela user 
@@ -27,59 +30,60 @@ public class SqlUser implements ConnectionTable {
 	
 	
 	@Override
-	public void insertRegistry(String name, String login, String password, String email) throws java.sql.SQLException{
-		String query = "INSERT INTO user VALUES "+"(NULL,'"+name+"','"+login+"','"+password+"','"+email+"');";
+	public void insertRegistry(UserAccount account) throws java.sql.SQLException{
+		String query = "INSERT INTO user VALUES "+"(NULL,'"+account.getName()+"','"+account.getLogin()+"','"
+													+account.getPassword()+"','"+account.getEmail()+"');";
+		
 		MySql.stm.executeUpdate(query);
 	}
 	
 	
+	@SuppressWarnings("serial")
 	@Override 
-	public String[] selectRegistry(int iduser) throws java.sql.SQLException{
+	public UserAccount selectRegistry(int iduser) throws SQLException, AccountException {
 		String query = "SELECT * FROM user WHERE iduser ="+iduser+";";
-		String Registry[] = new String[5];
 		
 		MySql.rs = MySql.stm.executeQuery(query);
 		MySql.stm = MySql.conn.createStatement();
 		
 		if(MySql.rs.next()){
-			Registry[0] = MySql.rs.getString("iduser");
-			Registry[1] = MySql.rs.getString("name");
-			Registry[2] = MySql.rs.getString("login");
-			Registry[3] = MySql.rs.getString("password");
-			Registry[4] = MySql.rs.getString("email");
+			UserAccount userData = new UserAccount();
+			userData.setIdUser(Integer.parseInt(MySql.rs.getString("iduser")));
+			userData.setName(MySql.rs.getString("name"));
+			userData.setLogin(MySql.rs.getString("login"));
+			userData.setPassword(MySql.rs.getString("password"));
+			userData.setEmail(MySql.rs.getString("email"));
+			return userData;
 		}else{
-			return null;
+			throw new AccountException("Usuário inexistente."){
+			};
 		}
 		
-		return Registry;
 	}
 	
+	@SuppressWarnings("serial")
 	@Override
-	public String[] selectRegistry(String login) throws java.sql.SQLException{
+	public UserAccount selectRegistry(String login) throws java.sql.SQLException, AccountException {
 		
 		String query = "SELECT * FROM user WHERE login ='"+login+"';";
-		String Registry[] = new String[5];
 		
 		MySql.rs = MySql.stm.executeQuery(query);
 		MySql.stm = MySql.conn.createStatement();
-	
+		
 		if(MySql.rs.next()){
-		
-			Registry[0] = MySql.rs.getString("iduser");
-			Registry[1] = MySql.rs.getString("name");
-			Registry[2] = MySql.rs.getString("login");
-			Registry[3] = MySql.rs.getString("password");
-			Registry[4] = MySql.rs.getString("email");
-		
+			UserAccount userData = new UserAccount();
+			userData.setIdUser(Integer.parseInt(MySql.rs.getString("iduser")));
+			userData.setName(MySql.rs.getString("name"));
+			userData.setLogin(MySql.rs.getString("login"));
+			userData.setPassword(MySql.rs.getString("password"));
+			userData.setEmail(MySql.rs.getString("email"));
+			return userData;
 		}else{
-			return null;
+			throw new AccountException("Usuário inexistente."){
+			};
 		}
-		
-		return Registry;
 	}
 	
-	
-
 	@Override
 	public void deleteRegistry(int iduser) throws java.sql.SQLException{
 		String query = "DELETE FROM user WHERE iduser = "+iduser+";";
@@ -87,9 +91,15 @@ public class SqlUser implements ConnectionTable {
 	}
 
 	@Override
-	public void alterRegistry(int iduser,  String attribute, String value) throws java.sql.SQLException{
-		String query = "UPDATE user SET "+attribute+"= \""+value+"\" WHERE iduser = "+iduser+";";
+	public void alterRegistry(UserAccount account) throws java.sql.SQLException{
+		
+		String query = "UPDATE user SET name =\" " +account.getName()+"\",login = \""+account.getLogin()+
+						"\",password =\""+account.getPassword()+"\", email = \""+account.getEmail()+
+						"\"WHERE iduser = "+account.getId()+";";
+
 		MySql.stm.executeUpdate(query);
 	}
+
+
 	
 }
