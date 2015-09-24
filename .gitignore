@@ -15,9 +15,10 @@ hs_err_pid*
 *.classpath
 
 # Tudo que não é play
-.settings/
-Dump20150920/
-src/
-tests/
+/.settings/*
+/Dump20150920/*
+/src/*
+/tests/*
+/tmp/*
 .project
 DBreqagile.mwb
