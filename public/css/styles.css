@@ -1,0 +1,30 @@
+.modal-footer {   
+	border-top: 0px; 
+}
+
+.login {
+	background-color: #222;
+}
+
+#loginModal {
+	top: 6rem;
+}
+
+#loginModal .modal-content {
+	background-color: transparent;
+	box-shadow: none;
+	border: none;
+}
+
+#loginModal .btn {
+	border-bottom: 4px solid #CB8F00;
+}
+
+#loginModal .btn:hover {
+	background-color: #AAA;
+	border-bottom: 4px solid #666;
+}
+
+.logo {
+	height: 12rem;
+}
