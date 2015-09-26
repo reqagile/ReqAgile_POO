@@ -3097,8 +3097,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  color: #333;
-  background-color: #CB8F00;
+  color: #F9DA00;
+  background-color: #222;
   border-color: none;
 }
 .btn-primary:active,
@@ -4392,6 +4392,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-right {
     float: right !important;
     margin-right: -15px;
+    margin-top: 9px;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -5190,9 +5191,9 @@ a.list-group-item:focus {
 .list-group-item.active:hover,
 .list-group-item.active:focus {
   z-index: 2;
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  color: #222;
+  background-color: #CCC;
+  border-color: #CCC;
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,

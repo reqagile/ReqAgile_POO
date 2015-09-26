@@ -3,8 +3,10 @@
 # ~~~~
 
 # Home page
-GET     /                                       Access.index
-GET 	/home 									User.home
+GET     /                                       AccountManagement.index
+GET		/register								AccountManagement.register
+GET 	/home 									AccountManagement.home
+GET		/project/create							Project.createProject
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

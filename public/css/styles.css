@@ -10,6 +10,10 @@
 	top: 6rem;
 }
 
+.regModal {
+	top: 1rem !important;
+}
+
 #loginModal .modal-content {
 	background-color: transparent;
 	box-shadow: none;
@@ -21,10 +25,15 @@
 }
 
 #loginModal .btn:hover {
+	color: #333;
 	background-color: #AAA;
 	border-bottom: 4px solid #666;
 }
 
 .logo {
 	height: 12rem;
+}
+
+.control-group {
+	margin-top: 3px;
 }

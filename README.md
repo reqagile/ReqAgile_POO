@@ -2,7 +2,7 @@
 
 
 ## Tutorial
---------
+
 
 1. Baixar a versão 1.3.0  https://www.playframework.com/download#older-versions
 
