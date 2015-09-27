@@ -1,7 +1,6 @@
 package mvc.model.dbconnect;
 
 import java.sql.SQLException;
-import mvc.model.AccountException;
 
 
 /**
@@ -36,9 +35,8 @@ public interface ConnectionTable<Table> {
 	 * 		Objeto para registro
 	 * 
 	 * @throws SQLException
-	 * @throws AccountException
 	 */
-	public Table selectRegistry(int id) throws SQLException, AccountException;	
+	public Table selectRegistry(int id) throws SQLException;	
 	
 	/**
 	 * Recupera um registro do Data Base
@@ -49,9 +47,8 @@ public interface ConnectionTable<Table> {
 	 * @return
 	 * 		Objeto para o registro
 	 * @throws SQLException
-	 * @throws AccountException
 	 */
-	public Table selectRegistry(String secondaryKey) throws SQLException, AccountException;
+	public Table selectRegistry(String secondaryKey) throws SQLException;
 	/**
 	 * Delata um registro do DataBase
 	 * @param id

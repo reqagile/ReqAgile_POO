@@ -42,9 +42,9 @@ public class SqlUser implements ConnectionTable<UserAccount> {
 	
 	
 	
-	@SuppressWarnings("serial")
+	
 	@Override 
-	public UserAccount selectRegistry(int iduser) throws SQLException, AccountException {
+	public UserAccount selectRegistry(int iduser) throws SQLException{
 		String query = "SELECT * FROM user WHERE iduser ="+iduser+";";
 		
 		MySql.rs = MySql.stm.executeQuery(query);
@@ -59,17 +59,15 @@ public class SqlUser implements ConnectionTable<UserAccount> {
 			userData.setEmail(MySql.rs.getString("email"));
 			return userData;
 		}else{
-			throw new AccountException("Usuário inexistente."){
-			};
+			throw new SQLException();
 		}
 		
 	}
 	
 	
-	
-	@SuppressWarnings("serial")
+
 	@Override
-	public UserAccount selectRegistry(String login) throws java.sql.SQLException, AccountException {
+	public UserAccount selectRegistry(String login) throws java.sql.SQLException{
 		
 		String query = "SELECT * FROM user WHERE login ='"+login+"';";
 		
@@ -85,8 +83,7 @@ public class SqlUser implements ConnectionTable<UserAccount> {
 			userData.setEmail(MySql.rs.getString("email"));
 			return userData;
 		}else{
-			throw new AccountException("Usuário inexistente."){
-			};
+			throw new SQLException();
 		}
 	}
 	
