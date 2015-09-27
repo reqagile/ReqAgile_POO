@@ -11,7 +11,7 @@ import mvc.model.UserAccount;
  * @author Eduardo Scartezini
  *
  */
-public class SqlUser implements ConnectionTable {	
+public class SqlUser implements ConnectionTable<UserAccount> {	
 	
 	/**
 	 * Construtor do SqlUser. 
@@ -29,6 +29,8 @@ public class SqlUser implements ConnectionTable {
 	}
 	
 	
+	
+	
 	@Override
 	public void insertRegistry(UserAccount account) throws java.sql.SQLException{
 		String query = "INSERT INTO user VALUES "+"(NULL,'"+account.getName()+"','"+account.getLogin()+"','"
@@ -36,6 +38,8 @@ public class SqlUser implements ConnectionTable {
 		
 		MySql.stm.executeUpdate(query);
 	}
+	
+	
 	
 	
 	@SuppressWarnings("serial")
@@ -61,8 +65,19 @@ public class SqlUser implements ConnectionTable {
 		
 	}
 	
+	
+	
 	@SuppressWarnings("serial")
-	@Override
+	/**
+	 * Recupera um usuario do DB a partir do login
+	 * @param login
+	 * 		Login do usuario
+	 * @return
+	 * 		objeto para aquele usuario
+	 * 
+	 * @throws java.sql.SQLException
+	 * @throws AccountException
+	 */
 	public UserAccount selectRegistry(String login) throws java.sql.SQLException, AccountException {
 		
 		String query = "SELECT * FROM user WHERE login ='"+login+"';";
@@ -84,12 +99,15 @@ public class SqlUser implements ConnectionTable {
 		}
 	}
 	
+	
+	
 	@Override
 	public void deleteRegistry(int iduser) throws java.sql.SQLException{
 		String query = "DELETE FROM user WHERE iduser = "+iduser+";";
 		MySql.stm.executeUpdate(query);
 	}
 
+	
 	@Override
 	public void alterRegistry(UserAccount account) throws java.sql.SQLException{
 		
