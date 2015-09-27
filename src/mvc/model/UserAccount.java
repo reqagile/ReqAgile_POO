@@ -23,7 +23,6 @@ public class UserAccount extends AccountOperations {
 	}
 	
 	
-	//TODO: Mudar a maneira de receber os atributos.
 	public void CreateNewUser() throws AccountException {
 		//TODO: verificar o número de campos em String.
 		try {

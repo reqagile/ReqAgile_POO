@@ -32,7 +32,7 @@ public class DataBaseTests {
 		MySql.stm.executeUpdate(query);
 	}
 	
-	
+	//TODO: Reescrever os métodos de teste utilizando a nova assinatura dos métodos (recebendo UserAccount)
 	@Test
 	public void testInsertRegistry(){
 		try{
