@@ -41,12 +41,11 @@ public class TestUserAccount {
 	
 	@Test
 	public void testAuthenticateUser(){
-		AccountOperations operations = new UserAccount();
 		UserAccount user = new UserAccount();
 		
 		try{
 			account.CreateNewUser();
-			user = operations.authenticateUser("login", "senha");	
+			user = AccountOperations.authenticateUser("login", "senha");	
 			assertEquals(1, user.getId());
 			assertEquals("nome",user.getName());
 			assertEquals("login", user.getLogin());

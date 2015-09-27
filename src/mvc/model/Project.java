@@ -1,6 +1,6 @@
 package mvc.model;
 
-public class Project implements ProjectManagement{
+public class Project extends ProjectManagement{
 	
 	private int id;
 	private String title;
@@ -10,6 +10,25 @@ public class Project implements ProjectManagement{
 	public void createNewProject(String title, String description) throws ProjectException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void alterProject(Project project) throws ProjectException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteProject(Project project) throws ProjectException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Project(int id, String title, String description) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
 	}
 
 	public int getIdProject() {
@@ -35,5 +54,7 @@ public class Project implements ProjectManagement{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
 
 }

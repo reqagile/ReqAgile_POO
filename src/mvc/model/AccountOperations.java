@@ -29,7 +29,7 @@ public abstract class AccountOperations {
 	 * @throws AccountException
 	 * 			No caso de erro na interface com o banco de dados, lança a exceção.
 	 */
-	public UserAccount authenticateUser(String login, String password) throws AccountException {
+	public static UserAccount authenticateUser(String login, String password) throws AccountException {
 		try {
 			UserAccount	user = dbConnection.selectRegistry(login);
 			if((user != null) && user.getPassword().equals(password)) {

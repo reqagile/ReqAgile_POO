@@ -1,10 +1,7 @@
 package mvc.model.dbconnect;
 
 import java.sql.SQLException;
-
-import mvc.model.AccountException;
 import mvc.model.Project;
-import mvc.model.UserAccount;
 
 public class SqlProject implements ConnectionTable<Project> {
 	

@@ -1,7 +1,6 @@
 package mvc.model.dbconnect;
 
 import java.sql.SQLException;
-import mvc.model.AccountException;
 import mvc.model.UserAccount;
 
 /**
