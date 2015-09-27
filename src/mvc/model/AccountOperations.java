@@ -2,12 +2,13 @@ package mvc.model;
 
 import java.sql.SQLException;
 import mvc.model.dbconnect.ConnectionTable;
+import mvc.model.dbconnect.SqlUser;
 
 public abstract class AccountOperations {
 	/**
 	 * Conexão com o banco de dados.
 	 */
-	protected static ConnectionTable<UserAccount> dbConnection;
+	protected static ConnectionTable<UserAccount> dbConnection = new SqlUser();
 
 
 	/**
@@ -42,11 +43,13 @@ public abstract class AccountOperations {
 	}
 	
 	
-	public static ConnectionTable<UserAccount> getDbConnection() {
+	@SuppressWarnings("rawtypes")
+	public static ConnectionTable getDbConnection() {
 		return dbConnection;
 	}
 
-	public static void setDbConnection(ConnectionTable<UserAccount> dbConnection) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void setDbConnection(ConnectionTable dbConnection) {
 		UserAccount.dbConnection = dbConnection;
 	}
 }
