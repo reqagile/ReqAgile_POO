@@ -68,16 +68,7 @@ public class SqlUser implements ConnectionTable<UserAccount> {
 	
 	
 	@SuppressWarnings("serial")
-	/**
-	 * Recupera um usuario do DB a partir do login
-	 * @param login
-	 * 		Login do usuario
-	 * @return
-	 * 		objeto para aquele usuario
-	 * 
-	 * @throws java.sql.SQLException
-	 * @throws AccountException
-	 */
+	@Override
 	public UserAccount selectRegistry(String login) throws java.sql.SQLException, AccountException {
 		
 		String query = "SELECT * FROM user WHERE login ='"+login+"';";

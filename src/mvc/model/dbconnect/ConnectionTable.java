@@ -33,13 +33,25 @@ public interface ConnectionTable<Table> {
 	 * @param id
 	 * 		chave primaria do registro
 	 * @return
-	 * 		Objeto do registro
+	 * 		Objeto para registro
 	 * 
 	 * @throws SQLException
 	 * @throws AccountException
 	 */
 	public Table selectRegistry(int id) throws SQLException, AccountException;	
 	
+	/**
+	 * Recupera um registro do Data Base
+	 * 
+	 * 
+	 * @param secondaryKey
+	 * 		Chave secundaria do registro
+	 * @return
+	 * 		Objeto para o registro
+	 * @throws SQLException
+	 * @throws AccountException
+	 */
+	public Table selectRegistry(String secondaryKey) throws SQLException, AccountException;
 	/**
 	 * Delata um registro do DataBase
 	 * @param id

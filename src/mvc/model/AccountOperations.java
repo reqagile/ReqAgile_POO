@@ -1,13 +1,13 @@
 package mvc.model;
 
 import java.sql.SQLException;
-import mvc.model.dbconnect.SqlUser;
+import mvc.model.dbconnect.ConnectionTable;
 
 public abstract class AccountOperations {
 	/**
 	 * Conexão com o banco de dados.
 	 */
-	protected static SqlUser dbConnection;
+	protected static ConnectionTable<UserAccount> dbConnection;
 
 
 	/**
@@ -42,11 +42,11 @@ public abstract class AccountOperations {
 	}
 	
 	
-	public static SqlUser getDbConnection() {
+	public static ConnectionTable<UserAccount> getDbConnection() {
 		return dbConnection;
 	}
 
-	public static void setDbConnection(SqlUser dbConnection) {
+	public static void setDbConnection(ConnectionTable<UserAccount> dbConnection) {
 		UserAccount.dbConnection = dbConnection;
 	}
 }
