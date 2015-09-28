@@ -1,11 +1,12 @@
 package mvc.model;
 
 public class Project extends ProjectManagement{
-	
+
 	private int id;
 	private String title;
 	private String description;
 	
+
 	@Override
 	public void createNewProject(String title, String description) throws ProjectException {
 		// TODO Auto-generated method stub
@@ -54,7 +55,5 @@ public class Project extends ProjectManagement{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	
 
 }
