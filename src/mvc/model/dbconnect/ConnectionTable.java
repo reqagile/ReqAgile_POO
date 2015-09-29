@@ -56,7 +56,7 @@ public interface ConnectionTable<Table> {
 	 * 
 	 * @throws java.sql.SQLException
 	 */
-	public void deleteRegistry(int id)throws java.sql.SQLException;
+	public void deleteRegistry(Table registry)throws java.sql.SQLException;
 	
 	
 	/**

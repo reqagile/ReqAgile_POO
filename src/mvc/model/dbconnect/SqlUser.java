@@ -89,8 +89,8 @@ public class SqlUser implements ConnectionTable<UserAccount> {
 	
 	
 	@Override
-	public void deleteRegistry(int iduser) throws java.sql.SQLException{
-		String query = "DELETE FROM user WHERE iduser = "+iduser+";";
+	public void deleteRegistry(UserAccount account) throws java.sql.SQLException{
+		String query = "DELETE FROM user WHERE iduser = "+account.getIdUser()+";";
 		MySql.stm.executeUpdate(query);
 	}
 
@@ -100,7 +100,7 @@ public class SqlUser implements ConnectionTable<UserAccount> {
 		
 		String query = "UPDATE user SET name =\" " +account.getName()+"\",login = \""+account.getLogin()+
 						"\",password =\""+account.getPassword()+"\", email = \""+account.getEmail()+
-						"\"WHERE iduser = "+account.getId()+";";
+						"\"WHERE iduser = "+account.getIdUser()+";";
 
 		MySql.stm.executeUpdate(query);
 	}

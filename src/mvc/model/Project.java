@@ -2,32 +2,52 @@ package mvc.model;
 
 import java.sql.SQLException;
 
-public class Project extends ProjectManagement{
+import mvc.model.dbconnect.ConnectionTable;
+import mvc.model.dbconnect.SqlProject;
 
+public class Project implements Operations<Project>{
+	
+	private static ConnectionTable<Project> dbConnection = new SqlProject();
 	private int id;
 	private String title;
 	private String description;
 	
 	
 	@Override
-	public void createNewProject(String title, String description) throws ProjectException {
-		try{
+	public void CreateNew() throws SQLException {
 			dbConnection.insertRegistry(this);
+	}
+
+	@Override
+	public void Alter(Project project) throws SQLException {
+			dbConnection.alterRegistry(project);
+	}
+
+	@Override
+	public void Delete(Project project) throws SQLException {
+			dbConnection.deleteRegistry(project);
+	}
+	
+	/**
+	 * Metodo que pesquisa um projeto no Banco de dados 
+	 * 
+	 * @param title
+	 * @return Project
+	 * 		Objeto para projeto
+	 * @throws ProjectException
+	 * 		Para erros com banco de dados ou projeto não encontrados
+	 */
+	public static Project Search(String title) throws SQLException{
+		try{
+			Project project = dbConnection.selectRegistry(title);
+			if(project != null){
+				return project;
+			}else{
+				throw new SQLException("Projeto não cadastrado");
+			}
 		}catch(SQLException e){
-			throw new ProjectException("Database Failure");
+			throw new SQLException("Database Faluier");
 		}
-	}
-
-	@Override
-	public void alterProject(Project project) throws ProjectException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteProject(Project project) throws ProjectException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public Project (){
@@ -64,5 +84,7 @@ public class Project extends ProjectManagement{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
 
 }

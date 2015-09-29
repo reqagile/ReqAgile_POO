@@ -2,9 +2,13 @@ package mvc.model;
 
 import java.sql.*;
 
+import mvc.model.dbconnect.ConnectionTable;
+import mvc.model.dbconnect.SqlUser;
 
-public class UserAccount extends AccountOperations {	
+
+public class UserAccount implements Operations<UserAccount> {	
 	
+	private static ConnectionTable<UserAccount> dbConnection = new SqlUser();
 	private int idUser;
 	private String name;
 	private String login;
@@ -22,19 +26,60 @@ public class UserAccount extends AccountOperations {
 		this.email = email;
 	}
 	
-	
-	public void CreateNewUser() throws AccountException {
+	@Override
+	public void CreateNew() throws SQLException {
 		//TODO: verificar o número de campos em String.
 		try {
 			dbConnection.insertRegistry(this);
 		} catch (SQLException e) {
 			//TODO: tratar excessão de maneiras diferentes de acordo o conteúdo de e.
-			throw new AccountException("Database Failure");
+			throw new SQLException("Database Failure");
 		}
 	}
 	
+	@Override
+	public void Delete(UserAccount account) throws SQLException {
+		dbConnection.deleteRegistry(account);		
+	}
 
-	public int getId() {
+	@Override
+	public void Alter(UserAccount account) throws SQLException {
+		dbConnection.alterRegistry(account);
+		
+	}
+
+	
+	public static UserAccount Search(String login) throws SQLException {
+		return dbConnection.selectRegistry(login);
+	}
+	
+	
+	
+	/**
+	 * Verifica se o usuário informado existe e se a sua senha coincide com a
+	 * senha informada pelo usuário. No caso de sucesso, retorna a conta do usuário.
+	 * Caso contrário, retorna um objeto UserAccount nulo.
+	 * @param login
+	 * 			Nome de usuário
+	 * @param password
+	 * 			Senha
+	 * @throws AccountException
+	 * 			No caso de erro na interface com o banco de dados, lança a exceção.
+	 */
+	public static UserAccount authenticateUser(String login, String password) throws AccountException {
+		try {
+			UserAccount	user = UserAccount.Search(login);
+			if((user != null) && user.getPassword().equals(password)) {
+				return user;
+			}else {
+				return null;
+			}
+		}catch(SQLException e) {
+			throw new AccountException("Erro no acesso ao banco de dados!");
+		}
+	}
+
+	public int getIdUser() {
 		return idUser;
 	}
 	
@@ -73,5 +118,7 @@ public class UserAccount extends AccountOperations {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 
 }

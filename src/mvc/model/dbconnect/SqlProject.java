@@ -76,8 +76,8 @@ public class SqlProject implements ConnectionTable<Project> {
 	
 
 	@Override
-	public void deleteRegistry(int idProject) throws SQLException {
-		String query = "DELETE FROM user WHERE idprojeto = "+idProject+";";
+	public void deleteRegistry(Project project) throws SQLException {
+		String query = "DELETE FROM user WHERE idprojeto = "+project.getIdProject()+";";
 		
 		MySql.stm.executeUpdate(query);
 	}
