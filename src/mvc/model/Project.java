@@ -1,16 +1,21 @@
 package mvc.model;
 
+import java.sql.SQLException;
+
 public class Project extends ProjectManagement{
 
 	private int id;
 	private String title;
 	private String description;
 	
-
+	
 	@Override
 	public void createNewProject(String title, String description) throws ProjectException {
-		// TODO Auto-generated method stub
-		
+		try{
+			dbConnection.insertRegistry(this);
+		}catch(SQLException e){
+			throw new ProjectException("Database Failure");
+		}
 	}
 
 	@Override
@@ -25,7 +30,11 @@ public class Project extends ProjectManagement{
 		
 	}
 
-
+	public Project (){
+	
+	}
+	
+	
 	public Project(int id, String title, String description) {
 		this.id = id;
 		this.title = title;
