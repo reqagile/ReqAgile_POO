@@ -13,6 +13,20 @@ public class Project implements Operations<Project>{
 	private String description;
 	
 	
+	/**
+	 * Com esse contrutor ja define o valor 
+	 * de todos os atributos da classe;
+	 * 
+	 * @param id
+	 * @param title
+	 * @param description
+	 */
+	public Project(int id, String title, String description) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+	}
+	
 	@Override
 	public void CreateNew() throws SQLException {
 			dbConnection.insertRegistry(this);
@@ -50,16 +64,14 @@ public class Project implements Operations<Project>{
 		}
 	}
 
+	/************************************************************************************************/
+		
+	
+	/************************************************************************************************/
 	public Project (){
 	
 	}
 	
-	
-	public Project(int id, String title, String description) {
-		this.id = id;
-		this.title = title;
-		this.description = description;
-	}
 
 	public int getIdProject() {
 		return id;
