@@ -54,6 +54,10 @@ public class UserAccount implements Operations<UserAccount> {
 		return dbConnection.selectRegistry(login);
 	}
 	
+	public static UserAccount Search(int idAccount) throws SQLException{
+		return dbConnection.selectRegistry(idAccount);
+		
+	}
 	
 	
 	/**

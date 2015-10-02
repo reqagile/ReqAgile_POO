@@ -32,13 +32,14 @@ public class SqlProject implements ConnectionTable<Project> {
 
 	@Override
 	public Project selectRegistry(int idProject) throws SQLException {
-		String query = "SELECT * FROM user WHERE idprojeto = "+idProject+";";
+		String query = "SELECT * FROM user WHERE idprojeto = "+idProject+";";	
+		Project project = new Project();
 		
 		MySql.rs = MySql.stm.executeQuery(query);
 		MySql.stm = MySql.conn.createStatement();
 		
 		if(MySql.rs.next()){
-			Project project = new Project();
+			
 			
 			project.setIdProject(Integer.parseInt(MySql.rs.getString("idprojeto")));
 			project.setTitle(MySql.rs.getString("titulo"));
@@ -48,7 +49,7 @@ public class SqlProject implements ConnectionTable<Project> {
 			throw new SQLException("Projeto não cadastrado");
 		}
 		
-		return null;
+		return project;
 	}
 
 	
@@ -56,28 +57,27 @@ public class SqlProject implements ConnectionTable<Project> {
 	@Override
 	public Project selectRegistry(String title) throws SQLException {
 		String query = "SELECT * FROM user WHERE titulo = "+title+";";
+		Project project = new Project();
 		
 		MySql.rs = MySql.stm.executeQuery(query);
 		MySql.stm = MySql.conn.createStatement();
 		
-		if(MySql.rs.next()){
-			Project project = new Project();
-			
+		if(MySql.rs.next()){		
 			project.setIdProject(Integer.parseInt(MySql.rs.getString("idprojeto")));
 			project.setTitle(MySql.rs.getString("titulo"));
 			project.setDescription(MySql.rs.getString("descricao"));
 			
 		}else{
-			throw new SQLException("Projeto não cadastrado");
+			return null;
 		}
-		return null;
+		return project;
 	}
 	
 	
 
 	@Override
 	public void deleteRegistry(Project project) throws SQLException {
-		String query = "DELETE FROM user WHERE idprojeto = "+project.getIdProject()+";";
+		String query = "DELETE FROM projeto WHERE idprojeto = "+project.getIdProject()+";";
 		
 		MySql.stm.executeUpdate(query);
 	}
@@ -86,7 +86,7 @@ public class SqlProject implements ConnectionTable<Project> {
 	
 	@Override
 	public void alterRegistry(Project project) throws SQLException {
-		String query = "UPDATE user SET titulo = \""+project.getTitle()+"\" , descricao = \""+
+		String query = "UPDATE projeto SET titulo = \""+project.getTitle()+"\" , descricao = \""+
 						project.getDescription()+"\" WHERE idprojeto = "+project.getIdProject()+";";
 		
 		MySql.stm.executeUpdate(query);

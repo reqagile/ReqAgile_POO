@@ -53,15 +53,20 @@ public class Project implements Operations<Project>{
 	 * 		Para erros com banco de dados ou projeto não encontrados
 	 */
 	public static Project Search(String title) throws SQLException{
-		try{
-			Project project = dbConnection.selectRegistry(title);
-			if(project != null){
-				return project;
-			}else{
-				throw new SQLException("Projeto não cadastrado");
-			}
-		}catch(SQLException e){
-			throw new SQLException("Database Faluier");
+		Project project = dbConnection.selectRegistry(title);
+		if(project != null){
+			return project;
+		}else{
+			throw new SQLException("Projeto não cadastrado");
+		}
+	}
+	
+	public static Project Search(int idProject) throws SQLException{
+		Project project = dbConnection.selectRegistry(idProject);
+		if(project != null){
+			return project;
+		}else{
+			throw new SQLException("Projeto não cadastrado");
 		}
 	}
 
