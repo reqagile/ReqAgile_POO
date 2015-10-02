@@ -1,4 +1,4 @@
-package mvc.model;
+package mvc.model.exception;
 
 @SuppressWarnings("serial")
 public class ProjectException extends Exception {

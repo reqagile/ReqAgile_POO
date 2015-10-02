@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import mvc.model.dbconnect.ConnectionTable;
 import mvc.model.dbconnect.SqlProject;
+import mvc.model.exception.ProjectException;
 
 public class Project implements Operations<Project>{
 	

@@ -4,6 +4,7 @@ import java.sql.*;
 
 import mvc.model.dbconnect.ConnectionTable;
 import mvc.model.dbconnect.SqlUser;
+import mvc.model.exception.AccountException;
 
 
 public class UserAccount implements Operations<UserAccount> {	

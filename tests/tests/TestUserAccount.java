@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import org.junit.Before;
 import org.junit.Test;
 
-import mvc.model.AccountException;
 import mvc.model.AccountOperations;
 import mvc.model.UserAccount;
 import mvc.model.dbconnect.MySql;
+import mvc.model.exception.AccountException;
 
 
 public class TestUserAccount {
