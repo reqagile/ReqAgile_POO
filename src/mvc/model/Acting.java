@@ -2,6 +2,8 @@ package mvc.model;
 
 import java.sql.SQLException;
 
+import mvc.model.dbconnect.SqlActing;
+
 /**
  * Classe para definir a função de um usuario
  * em um projeto.
@@ -10,6 +12,7 @@ import java.sql.SQLException;
  */
 public class Acting implements Operations<Acting>{
 	
+	private SqlActing sqlActing = new SqlActing();
 	private Project project;
 	private UserAccount account;
 	private String function;
@@ -23,30 +26,70 @@ public class Acting implements Operations<Acting>{
 		this.function = function;
 	}
 
+	
+	/**
+	 * deleta todas informaçoes referente a 
+	 * um projeto
+	 * 
+	 * @param project
+	 * @throws SQLException
+	 */
+	public void delete(Project project) throws SQLException{
+		sqlActing.deleteRegistry(project);
+	}
+	
+	/**
+	 * deleta todas as informaçoes referente a uma 
+	 * conta
+	 * 
+	 * @param account
+	 * @throws SQLException
+	 */
+	public void delete(UserAccount account) throws SQLException{
+		sqlActing.deleteRegistry(account);
+	}
+	
+	
 	@Override
 	/**
 	 * Serve para persistir a função do user
 	 * no DataBase
 	 */
 	public void createNew() throws SQLException {
-		// TODO Auto-generated method stub
+		if(this.project != null && this.account != null && this.function != null){
+			sqlActing.insertRegistry(this);
+		}
 	}
 
 	@Override
-	public void delete(Acting registry) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public void delete(Acting acting) throws SQLException {
+		sqlActing.deleteRegistry(acting);
 	}
 
 	@Override
-	public void alter(Acting registry) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * Altera a funçao, caso o usuario ja exista 
+	 * como no projeto.
+	 * Pega o usuario e o projeto
+	 * e altera a função  
+	 * 
+	 */
+	public void alter(Acting acting) throws SQLException {
+		sqlActing.deleteRegistry(acting);
+		sqlActing.insertRegistry(acting);
 	}
 	
-	public Acting search(Project project, UserAccount account){
-		// TODO 
-		return null;
+	/**
+	 * Pesquisa a funçao de
+	 * uma user em um projeto
+	 * 
+	 * @param project
+	 * @param account
+	 * @return
+	 * @throws SQLException
+	 */
+	public Acting search(Project project, UserAccount account) throws SQLException{ 
+		return sqlActing.selectRegistry(project.getIdProject(), account.getIdUser());
 	}
 	
 	

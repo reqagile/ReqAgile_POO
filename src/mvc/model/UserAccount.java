@@ -3,6 +3,7 @@ package mvc.model;
 import java.sql.*;
 
 import mvc.model.dbconnect.ConnectionTable;
+import mvc.model.dbconnect.SqlActing;
 import mvc.model.dbconnect.SqlUser;
 import mvc.model.exception.AccountException;
 
@@ -40,6 +41,15 @@ public class UserAccount implements Operations<UserAccount> {
 	
 	@Override
 	public void delete(UserAccount account) throws SQLException {
+		SqlActing sqlActing = new SqlActing();
+		
+		//Trantando pq um usuario pode nao 
+		//ter função em nem um projeto
+		try{
+			sqlActing.deleteRegistry(account);
+		}catch(SQLException e){
+		}
+		
 		dbConnection.deleteRegistry(account);		
 	}
 

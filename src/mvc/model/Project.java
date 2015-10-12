@@ -3,6 +3,7 @@ package mvc.model;
 import java.sql.SQLException;
 
 import mvc.model.dbconnect.ConnectionTable;
+import mvc.model.dbconnect.SqlActing;
 import mvc.model.dbconnect.SqlProject;
 import mvc.model.exception.ProjectException;
 
@@ -52,6 +53,9 @@ public class Project implements Operations<Project>{
 
 	@Override
 	public void delete(Project project) throws SQLException {
+			SqlActing sqlActing = new SqlActing();
+			
+			sqlActing.deleteRegistry(project);
 			dbConnection.deleteRegistry(project);
 	}
 	
