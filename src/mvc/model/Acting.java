@@ -2,6 +2,12 @@ package mvc.model;
 
 import java.sql.SQLException;
 
+/**
+ * Classe para definir a função de um usuario
+ * em um projeto.
+ * @author Eduardo Scartezini
+ *
+ */
 public class Acting implements Operations<Acting>{
 	
 	private Project project;
@@ -18,22 +24,30 @@ public class Acting implements Operations<Acting>{
 	}
 
 	@Override
-	public void CreateNew() throws SQLException {
+	/**
+	 * Serve para persistir a função do user
+	 * no DataBase
+	 */
+	public void createNew() throws SQLException {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void Delete(Acting registry) throws SQLException {
+	public void delete(Acting registry) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Alter(Acting registry) throws SQLException {
+	public void alter(Acting registry) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public Acting search(Project project, UserAccount account){
+		// TODO 
+		return null;
+	}
 	
 	
 	public Project getProject() {

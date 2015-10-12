@@ -23,7 +23,7 @@ public class SqlProject implements ConnectionTable<Project> {
 	
 	@Override
 	public void insertRegistry(Project project) throws SQLException {
-		String query = "INSERT INTO user VALUES "+"(NULL,'"+project.getTitle()+"','"+
+		String query = "INSERT INTO projeto VALUES "+"(NULL,'"+project.getTitle()+"','"+
 						project.getDescription()+"');";
 		
 		MySql.stm.executeUpdate(query);
@@ -32,7 +32,7 @@ public class SqlProject implements ConnectionTable<Project> {
 
 	@Override
 	public Project selectRegistry(int idProject) throws SQLException {
-		String query = "SELECT * FROM user WHERE idprojeto = "+idProject+";";	
+		String query = "SELECT * FROM projeto WHERE idprojeto = "+idProject+";";	
 		Project project = new Project();
 		
 		MySql.rs = MySql.stm.executeQuery(query);
@@ -56,7 +56,7 @@ public class SqlProject implements ConnectionTable<Project> {
 	
 	@Override
 	public Project selectRegistry(String title) throws SQLException {
-		String query = "SELECT * FROM user WHERE titulo = "+title+";";
+		String query = "SELECT * FROM projeto WHERE titulo = "+title+";";
 		Project project = new Project();
 		
 		MySql.rs = MySql.stm.executeQuery(query);

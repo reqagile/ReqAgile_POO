@@ -6,12 +6,18 @@ import mvc.model.dbconnect.ConnectionTable;
 import mvc.model.dbconnect.SqlProject;
 import mvc.model.exception.ProjectException;
 
+/**
+ * Classe para operar projetos
+ * @author Eduardo Scartezini
+ *
+ */
 public class Project implements Operations<Project>{
 	
 	private static ConnectionTable<Project> dbConnection = new SqlProject();
 	private int id;
 	private String title;
 	private String description;
+	private UserAccount admin;
 	
 	
 	/**
@@ -21,25 +27,31 @@ public class Project implements Operations<Project>{
 	 * @param id
 	 * @param title
 	 * @param description
+	 * @param admin
 	 */
-	public Project(int id, String title, String description) {
+	public Project(int id, String title, String description, UserAccount admin) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.admin = admin;
 	}
 	
 	@Override
-	public void CreateNew() throws SQLException {
+	public void createNew() throws SQLException {
 			dbConnection.insertRegistry(this);
+			
+			//persistir o administrador do novo projeto.
+			Acting acting = new Acting(this,this.admin,"Administrador");
+			acting.createNew();
 	}
 
 	@Override
-	public void Alter(Project project) throws SQLException {
+	public void alter(Project project) throws SQLException {
 			dbConnection.alterRegistry(project);
 	}
 
 	@Override
-	public void Delete(Project project) throws SQLException {
+	public void delete(Project project) throws SQLException {
 			dbConnection.deleteRegistry(project);
 	}
 	
@@ -52,7 +64,7 @@ public class Project implements Operations<Project>{
 	 * @throws ProjectException
 	 * 		Para erros com banco de dados ou projeto não encontrados
 	 */
-	public static Project Search(String title) throws SQLException{
+	public static Project search(String title) throws SQLException{
 		Project project = dbConnection.selectRegistry(title);
 		if(project != null){
 			return project;
@@ -61,7 +73,7 @@ public class Project implements Operations<Project>{
 		}
 	}
 	
-	public static Project Search(int idProject) throws SQLException{
+	public static Project search(int idProject) throws SQLException{
 		Project project = dbConnection.selectRegistry(idProject);
 		if(project != null){
 			return project;

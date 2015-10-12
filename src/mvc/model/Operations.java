@@ -12,7 +12,7 @@ public interface Operations<T> {
 	 * 
 	 * @throws SQLException
 	 */
-	public void CreateNew() throws SQLException;
+	public void createNew() throws SQLException;
 	
 	/**
 	 * deleta um tipo de registro da sua respequitiva
@@ -22,7 +22,7 @@ public interface Operations<T> {
 	 * @param registry
 	 * @throws SQLException
 	 */
-	public void Delete(T registry) throws SQLException;
+	public void delete(T registry) throws SQLException;
 	
 	
 	/**
@@ -33,6 +33,6 @@ public interface Operations<T> {
 	 * @param registry
 	 * @throws SQLException
 	 */
-	public void Alter(T registry) throws SQLException;
+	public void alter(T registry) throws SQLException;
 	
 }

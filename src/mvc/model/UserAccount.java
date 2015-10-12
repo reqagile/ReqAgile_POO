@@ -28,7 +28,7 @@ public class UserAccount implements Operations<UserAccount> {
 	}
 	
 	@Override
-	public void CreateNew() throws SQLException {
+	public void createNew() throws SQLException {
 		//TODO: verificar o número de campos em String.
 		try {
 			dbConnection.insertRegistry(this);
@@ -39,22 +39,22 @@ public class UserAccount implements Operations<UserAccount> {
 	}
 	
 	@Override
-	public void Delete(UserAccount account) throws SQLException {
+	public void delete(UserAccount account) throws SQLException {
 		dbConnection.deleteRegistry(account);		
 	}
 
 	@Override
-	public void Alter(UserAccount account) throws SQLException {
+	public void alter(UserAccount account) throws SQLException {
 		dbConnection.alterRegistry(account);
 		
 	}
 
 	
-	public static UserAccount Search(String login) throws SQLException {
+	public static UserAccount search(String login) throws SQLException {
 		return dbConnection.selectRegistry(login);
 	}
 	
-	public static UserAccount Search(int idAccount) throws SQLException{
+	public static UserAccount search(int idAccount) throws SQLException{
 		return dbConnection.selectRegistry(idAccount);
 		
 	}
@@ -73,7 +73,7 @@ public class UserAccount implements Operations<UserAccount> {
 	 */
 	public static UserAccount authenticateUser(String login, String password) throws AccountException {
 		try {
-			UserAccount	user = UserAccount.Search(login);
+			UserAccount	user = UserAccount.search(login);
 			if((user != null) && user.getPassword().equals(password)) {
 				return user;
 			}else {
