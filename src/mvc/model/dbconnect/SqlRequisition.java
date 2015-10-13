@@ -4,6 +4,15 @@ import java.sql.SQLException;
 
 import mvc.model.Requisition;
 
+
+/**
+ * Classe para fazer a liação 
+ * com as diverças tabelas 
+ * que definem requisito
+ * 
+ * @author Eduardo Scartezini
+ *
+ */
 public class SqlRequisition implements ConnectionTable<Requisition>{
 
 	@Override
