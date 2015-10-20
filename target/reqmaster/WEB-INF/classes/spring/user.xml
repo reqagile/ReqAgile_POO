@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Stock business object -->
+   <bean id="stockBo" class="br.poo.com.reqagile.service.StockServiceImpl" >
+   		<property name="stockDao" ref="stockDao" />
+   </bean>
+ 
+   <!-- Stock Data Access Object -->
+   <bean id="stockDao" class="br.poo.com.reqagile.dao.StockDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
+   
+</beans>

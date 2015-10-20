@@ -1,0 +1,7 @@
+br\poo\com\reqagile\controller\SpringController.class
+br\poo\com\reqagile\service\UserAccountServiceImpl.class
+br\poo\com\reqagile\dao\UserAccountDaoImpl.class
+br\poo\com\reqagile\model\UserAccount.class
+br\poo\com\reqagile\dao\CustomHibernateDaoSupport.class
+br\poo\com\reqagile\dao\UserAccountDao.class
+br\poo\com\reqagile\service\UserAccountService.class
