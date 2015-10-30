@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-       <a class="navbar-brand" href="./"> <spring:message code="show.titulo"/></a>
+        <a class="navbar-brand" href="./"> <spring:message code="show.titulo"/> </a>
      </div>
      <div class="navbar-collapse collapse">
         <div class="row" style="padding-top: 10px;">

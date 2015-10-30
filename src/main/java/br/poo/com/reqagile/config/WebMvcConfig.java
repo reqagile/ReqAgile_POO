@@ -4,14 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -20,13 +17,6 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @ComponentScan(basePackages = "br.poo.com.reqagile.controller")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-/*	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		super.addViewControllers(registry);
-		registry.addViewController("home").setViewName("home"); 
-		registry.addViewController("criar_conta").setViewName("criar_conta");
-	}*/
-    
 /*	Configura o local das páginas e a extensao*/
     @Bean  
     public UrlBasedViewResolver setupViewResolver() {  
@@ -42,7 +32,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/");
     }
+
+/*Configura a página inicial como index
  
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("/index");
+    }*/
+    
 /*    Habilita a annotation para servlet*/
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

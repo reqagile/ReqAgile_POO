@@ -1,74 +1,55 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@taglib prefix="f" uri="http://java.sun.com/jsf/core" %>
-<%@taglib prefix="h" uri="http://java.sun.com/jsf/html" %> --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+ 
+        <title> <spring:message code="show.titulo" /> </title>
 
+		<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" >
+		
+		<spring:url value="/resources/bootstrap/css/bootstrap-theme.min.css" var="minCss"></spring:url>
+ 		<link href="${minCss}" rel="stylesheet"/>
+		
+        <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.css" /> ">
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/styles.css" /> ">
+    </head>
+    <body class="login">
 
-<html lang="en">
-  <head>
+ 	<jsp:include page="fragments/row_sup.jsp"/>
+ 
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Custom styles for this template -->
-
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-   	<script src="<c:url value="/resources/bootstrap/js/ie-emulation-modes-warning.js" />"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div >
-
-      <form class="form-signin" action="">
-        <h2 class="form-signin-heading">Faça seu Acesso</h2>
-        
-        <!-- Retirar class 'sr-only' para apresentar os labels -->
-        
-        <label for="inputEmail" class="sr-only">Endereço de Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Endereço de Email" required autofocus>
-        <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+    <!--login modal-->
+    <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="text-center"><img class="logo" src="resources/images/logo3.png"></h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                            <span class="pull-right"><a href="../register">Register</a></span><span><a href="../home">Need help?</a></span>
+                        </div>
+                    </form>
+              </div>
+              <div class="modal-footer">   
+              </div>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-      </form>
-      <div align="center">
-            <h1>Users List</h1>
-                  <table border="1">
-                <th>No</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Actions</th>
-                 
-                <c:forEach var="user" items="${userList}" varStatus="status">
-                <tr>
-                    <td>${status.index + 1}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                </tr>
-                </c:forEach>
-	</table>
-	</div>
-    </div> <!-- /container -->
+    </div>
 
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="<c:url value="/resources/bootstrap/js/ie10-viewport-bug-workaround.js" />"></script>
-  </body>
+         <!-- script references -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    </body>
 </html>

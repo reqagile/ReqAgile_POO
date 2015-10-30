@@ -1,4 +1,5 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%> --%>
@@ -30,13 +31,12 @@
 	                        Faça agora o seu cadastro e aproveite.</p>
 	                    <br />
 
-	                    <form class="form-horizontal" method="post" action="cadastrado" role="form" modelAttribute = "user"
-	                    method = "post">
+	                    <s:form class="form-horizontal" method="post" commandName="user" action="criar_conta"  >
 
 	                        <div class="form-group">
 	                            <label for="nome" class="col-sm-3 control-label">Nome</label>
 	                            <div class="col-sm-8">
-	                                <input type="text" class="form-control" id="nome" name="nome"
+	                                <s:input type="text" class="form-control" id="name" path="name"
 	                                    placeholder="Digite aqui seu usuário" />
 	                            </div>
 	                        </div>
@@ -44,16 +44,24 @@
 	                        <div class="form-group">
 	                            <label for="email" class="col-sm-3 control-label">Email</label>
 
-	                            <div class="col-sm-6">
-	                                <input type="text" class="form-control" id="email" name="email"
+	                            <div class="col-sm-8">
+	                                <s:input type="text" class="form-control" id="email" path="email"
 	                                    placeholder="Digite aqui seu email" />
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="nome" class="col-sm-3 control-label">Login</label>
+	                            <div class="col-sm-6">
+	                                <s:input type="text" class="form-control" id="login" path="login"
+	                                    placeholder="Digite aqui seu login de usuário" />
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group">
 	                            <label for="senha" class="col-sm-3 control-label">Senha</label>
 	                            <div class="col-sm-5">
-	                                <input type="password" id="senha" class="form-control" name="password"
+	                                <s:input type="password" id="senha" class="form-control" path="password"
 	                                    placeholder="Digite aqui sua senha" />
 	                            </div>
 	                        </div>
@@ -72,7 +80,7 @@
 	                            </div>
 	                        </div>
 	 
-	                    </form>
+	                    </s:form>
 	                </div>
 	            </div>
 	        </div>
