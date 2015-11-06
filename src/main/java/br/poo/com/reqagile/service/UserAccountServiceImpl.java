@@ -3,14 +3,14 @@ package br.poo.com.reqagile.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.poo.com.reqagile.dao.UserAccountDao;
+import br.poo.com.reqagile.dao.UserAccountDAO;
 import br.poo.com.reqagile.model.UserAccount;
 
 @Service("userAccountService")
 public class UserAccountServiceImpl implements UserAccountService{
 	
 	@Autowired
-	UserAccountDao userDao;
+	UserAccountDAO userDao;
 	
 	/*	public void setStockDao(StockDao stockDao) {
 		this.stockDao = stockDao;

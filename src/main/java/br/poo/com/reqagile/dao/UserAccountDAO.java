@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.poo.com.reqagile.model.UserAccount;
 
-public interface UserAccountDao {
+public interface UserAccountDAO {
 	void save(UserAccount user);
 	
 	void update(UserAccount user);

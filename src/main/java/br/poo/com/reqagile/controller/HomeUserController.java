@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.poo.com.reqagile.dao.UserAccountDao;
+import br.poo.com.reqagile.dao.UserAccountDAO;
 import br.poo.com.reqagile.model.UserAccount;
 import br.poo.com.reqagile.service.UserAccountService;
 
@@ -37,29 +37,32 @@ public class HomeUserController {
  * 			if an I/O error occurs
  */
 	@Autowired
-    private UserAccountDao userDao;
+    private UserAccountDAO userDao;
 	
 	@Autowired
 	private UserAccountService userService;
 	
 	
 	/**
-	 * Metodo responsavel por receber a requisicao para a raiz, ou seja, index ou /
-	 * e redirecionar para a home page. Tem como parametro um objeto que representa 
-	 * uma view e seus recursos. Neste caso o recurso preenchido eh a lista de usuarios
-	 * cadastrados. Esta lista pode ou nao ser exibida em tela.
+	 * Metodo responsavel por receber a requisicao inicial e tratar a inicializacao
+	 * das views. O valor inicial de mapeamento eh a raiz, ou seja, index ou /
+	 * 
 	*/
 	@RequestMapping(value={"/", "/index"},method = RequestMethod.GET)
-	public String index(ModelMap mMap){
+	public ModelAndView index(){
 		System.out.println("Acessando a index.jsp! Redirecionando para a home.jsp");
-		List<UserAccount> users = userDao.list();
-		mMap.put("userList", users);
 /*		for (UserAccount userAccount : users) {
 			System.out.println("Nome: " + userAccount.getName() + "Id: " + userAccount.getId());
 		}*/
-		return "home";
+		return start();
 	}
+
 	
+	/**
+	 * Metodo responsavel por responder requisicoes enviando uma model home page,
+	 * que eh a index ou /. Neste caso o recurso preenchido eh a lista de usuarios
+	 * cadastrados. Esta lista pode ou nao ser exibida em tela.
+	*/
 	@RequestMapping("/home")
 	public ModelAndView start(){
 //		System.out.println("Acessando a home.jsp!");
@@ -67,9 +70,15 @@ public class HomeUserController {
 		/*Nome da view que deseja referenciar*/
 		ModelAndView model = new ModelAndView("home");
 		model.addObject("userList", listUsers);
-		return new ModelAndView("home");
+		return model;
 	}
 	
+	/**
+	 * Metodo responsavel por receber a requisicao GET para a pagina jsp criarconta
+	 * e redirecionar para esta page. Tem como parametro um objeto que representa 
+	 * uma view e seus recursos. Neste caso o recurso eh o objeto usuario
+	 * a ser cadastrado. Retorna o nome da jsp a ser exibida.
+	*/
 	@RequestMapping(value="/criar_conta", method= RequestMethod.GET)
 	public String newUser(ModelMap mMap){
 		mMap.put("user", new UserAccount());
@@ -77,15 +86,24 @@ public class HomeUserController {
 		return "criar_conta";
 	}
 	
+	/**
+	 * Metodo responsavel por receber a requisicao POST da pagina criar_conta.jsp
+	 * e redirecionar para a home. Tem como parametro um objeto que representa 
+	 * o usuario preenchido e que sera persistido no banco.
+	 * Retorna para a home page atraves do metodo start().
+	*/
 	@RequestMapping(value="/criar_conta", method= RequestMethod.POST)
 	public ModelAndView newUser(@ModelAttribute(value="user") UserAccount user){
-		ModelAndView map = new ModelAndView("home");
+//		ModelAndView map = new ModelAndView("");
 		userService.save(user);
 		System.out.println("****Dados aguardados cadastrados!");
 		
-		return map;
+		return start();
 	}
 	
+	/**
+	 * 
+	*/
 	@RequestMapping("/cadastrado")
 	public ModelAndView newUser(){
 //		System.out.println("Acessando a home.jsp!");
@@ -95,9 +113,16 @@ public class HomeUserController {
 		System.out.println("**********Cadastrado com sucesso!");
 		return new ModelAndView("criar_conta");
 	}
-/*
 
 	
+	@RequestMapping(value="help", method= RequestMethod.GET)
+	public String help(){
+//		mMap.put("user", new UserAccount());
+		System.out.println("****Acessando a Help.jsp!");
+		return "help";
+	}
+	
+	/*
 	@RequestMapping(value="criar_conta", method= RequestMethod.GET)
 	public String newUser(ModelMap mMap){
 		mMap.put("user", new UserAccount());

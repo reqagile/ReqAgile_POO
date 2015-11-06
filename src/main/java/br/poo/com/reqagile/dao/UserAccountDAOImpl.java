@@ -10,7 +10,7 @@ import br.poo.com.reqagile.model.UserAccount;
 
 @Repository("userAccountDao")
 @Transactional
-public class UserAccountDaoImpl extends CustomHibernateDaoSupport implements UserAccountDao{
+public class UserAccountDAOImpl extends CustomHibernateDaoSupport implements UserAccountDAO{
 
 	public void save(UserAccount user) {
 		getHibernateTemplate().save(user);
