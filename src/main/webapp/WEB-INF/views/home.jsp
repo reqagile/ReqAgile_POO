@@ -5,11 +5,11 @@
  
         <title> <spring:message code="show.titulo" /> </title>
 
-		<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" >
+		<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" /> ">
 		
 		<spring:url value="/resources/bootstrap/css/bootstrap-theme.min.css" var="minCss"></spring:url>
- 		<link href="${minCss}" rel="stylesheet"/>
-		
+
+ 		<link href="${minCss}" rel="stylesheet"/>		
         <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.css" /> ">
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -38,18 +38,44 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-                            <span class="pull-right"><a href="../register">Register</a></span><span><a href="../home">Need help?</a></span>
+                            <span class="pull-right">
+<!--                             	<a href= "./register.jsp" > Register Teste</a></span> -->
+                            <span>
+	                            <a href= "<c:url value="help" />" > Need help?</a></span>
                         </div>
                     </form>
               </div>
-              <div class="modal-footer">   
-              </div>
+              <div class="modal-footer">
+					
+					<div align="center">
+						<h1>Usuários Cadastrados</h1>
+						<table border="1">
+							<th>Id</th>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Login</th>
+							<th>Senha</th>
+
+							<c:forEach var="user" items="${userList}" varStatus="status">
+								<tr>
+									<td>${user.id}</td>
+									<td>${user.name}</td>
+									<td>${user.email}</td>
+									<td>${user.login}</td>
+									<td>${user.password}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					
+				</div>
             </div>
         </div>
     </div>
 
          <!-- script references -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
+
     </body>
 </html>

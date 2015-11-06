@@ -1,89 +1,76 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%> --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+	<!--[if lt IE 9]>
+       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 	<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" >
-	<spring:url value="/resources/bootstrap/css/bootstrap-theme.min.css" var="minCss"></spring:url>
-	<link href="${minCss}" rel="stylesheet"/>
+	<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="resources/bootstrap/css/styles.css" rel="stylesheet">	
+	
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Login</title>
+</head>
+
+<body class="login">
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="./"> <spring:message code="show.titulo" /></a>
+		</div>
+	</div>
+
+	<!--login modal-->
+	<div id="loginModal" class="modal show" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="text-center">
+						<img class="logo" src="resources/images/logo3.png">
+					</h1>
+				</div>
+				<div class="modal-body">
+					<s:form class="form col-md-12 center-block" method="post" commandName="user" action="criar_conta"  >
+
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="name" path="name" 
+							placeholder="Digite seu nome">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="email" path="email" 
+							placeholder="Digite seu Email">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="login" path="login" 
+							placeholder="Informe seu login de usuário">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control input-lg" id="senha" path="password"
+							placeholder="Digite sua senha">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control input-lg" id="senha2"
+							placeholder="Confirme sua senha">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary btn-lg btn-block">Registrar</button>
+							<span><a href="./" style="font-size: 15px;">INÍCIO</a></span>
+						</div>
+					</s:form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- script references -->
+	<script	src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
 
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Login</title>
-	
- 
-	</head>
-	<body>
-	    <jsp:include page="/WEB-INF/views/fragments/row_sup.jsp" />
-	 
-	    <div class="container" style="padding-top: 90px;">
-	        <div class="row">
-	            <div class="container">
-	                <div class="col-md-8">
-	                    <h1>Crie sua conta no ReqAgile!</h1>
-	                    <p>Criando sua conta no ReqAgile você poderá gerenciar
-	                        todo o processo de negócios e desfrutar de todas as suas vantagens.
-	                        Faça agora o seu cadastro e aproveite.</p>
-	                    <br />
-
-	                    <s:form class="form-horizontal" method="post" commandName="user" action="criar_conta"  >
-
-	                        <div class="form-group">
-	                            <label for="nome" class="col-sm-3 control-label">Nome</label>
-	                            <div class="col-sm-8">
-	                                <s:input type="text" class="form-control" id="name" path="name"
-	                                    placeholder="Digite aqui seu usuário" />
-	                            </div>
-	                        </div>
-
-	                        <div class="form-group">
-	                            <label for="email" class="col-sm-3 control-label">Email</label>
-
-	                            <div class="col-sm-8">
-	                                <s:input type="text" class="form-control" id="email" path="email"
-	                                    placeholder="Digite aqui seu email" />
-	                            </div>
-	                        </div>
-	                        
-	                        <div class="form-group">
-	                            <label for="nome" class="col-sm-3 control-label">Login</label>
-	                            <div class="col-sm-6">
-	                                <s:input type="text" class="form-control" id="login" path="login"
-	                                    placeholder="Digite aqui seu login de usuário" />
-	                            </div>
-	                        </div>
-
-	                        <div class="form-group">
-	                            <label for="senha" class="col-sm-3 control-label">Senha</label>
-	                            <div class="col-sm-5">
-	                                <s:input type="password" id="senha" class="form-control" path="password"
-	                                    placeholder="Digite aqui sua senha" />
-	                            </div>
-	                        </div>
-
-	                        <div class="form-group">
-	                            <label for="senha2" class="col-sm-3 control-label">Confirme</label>
-	                            <div class="col-sm-5">
-	                                <input type="password" id="senha2" class="form-control"
-	                                    placeholder="Confirme aqui sua senha" />
-	                            </div>
-	                        </div>
-
-	                        <div class="form-group">
-	                            <div class="col-sm-offset-3 col-sm-10">
-	                                <button type="submit" class="btn btn-default" >Criar conta</button>
-	                            </div>
-	                        </div>
-	 
-	                    </s:form>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</body>
+</body>
 </html>

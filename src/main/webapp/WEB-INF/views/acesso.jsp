@@ -49,22 +49,25 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       </s:form>
-      <div align="center">
+      <div align="center" style="color: yellow;">
             <h1>Usuários Cadastrados</h1>
-                  <table border="1">
-                <th>Id</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Actions</th>
+                <table border="1">
+	                <th>Id</th>
+	                <th>Username</th>
+	                <th>Email</th>
+	                <th>Login</th>
+	                <th>Senha</th>
                  
-                <c:forEach var="user" items="${userList}" varStatus="status">
-                <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                </tr>
-                </c:forEach>
-	</table>
+	                <c:forEach var="user" items="${userList}" varStatus="status">
+    	            <tr>
+        	            <td>${user.id}</td>
+        	            <td>${user.name}</td>
+            	        <td>${user.email}</td>
+                	    <td>${user.login}</td>
+                    	<td>${user.password}</td>
+               		</tr>
+                	</c:forEach>
+				</table>
 	</div>
     </div> <!-- /container -->
 
