@@ -28,15 +28,15 @@ public class UserAccountServiceImpl implements UserAccountService{
 		userDao.delete(user);
 	}
 
-	public UserAccount findById(Integer id) {
+	public UserAccount findById(Integer id) throws Exception {
 		return userDao.findById(id);
 	}
 
-	public UserAccount findByEmail(String email) {
+	public UserAccount findByEmail(String email) throws Exception {
 		return userDao.findByEmail(email);
 	}
 
-	public UserAccount findByLogin(String login) {
+	public UserAccount findByLogin(String login) throws Exception {
 		return userDao.findByLogin(login);
 	}
 

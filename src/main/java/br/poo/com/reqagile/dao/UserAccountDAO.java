@@ -11,11 +11,11 @@ public interface UserAccountDAO {
 	
 	void delete(UserAccount user);
 	
-	UserAccount findById(Integer id);
+	UserAccount findById(Integer id) throws Exception;
 	
-	UserAccount findByEmail(String email);
+	UserAccount findByEmail(String email) throws Exception;
 	
-	UserAccount findByLogin(String login);
+	UserAccount findByLogin(String login) throws Exception;
 	
 	List<UserAccount> list();
 

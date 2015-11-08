@@ -26,25 +26,34 @@ public class UserAccountDAOImpl extends CustomHibernateDaoSupport implements Use
 		
 	}
 
-	public UserAccount findById(Integer id) {
+	public UserAccount findById(Integer id) throws Exception {
 		List<?> list = getHibernateTemplate().find(
-		"from usuario where idUser=?",id);
-		
-		return (UserAccount)list.get(0);
+			"from UserAccount where idUser=?",id);
+				
+		if(!list.isEmpty()) return (UserAccount)list.get(0);
+			else {
+				throw new Exception("Usuario nao encontrado");
+			}
 	}
 
-	public UserAccount findByEmail(String email) {
+	public UserAccount findByEmail(String email) throws Exception {
 		List<?> list = getHibernateTemplate().find(
-				"from usuario where email=?",email);
+				"from UserAccount where email=?",email);
 		
-		return (UserAccount)list.get(0);
+		if(!list.isEmpty()) return (UserAccount)list.get(0);
+		else {
+			throw new Exception("Usuario nao encontrado");
+		}
 	}
 
-	public UserAccount findByLogin(String login) {
+	public UserAccount findByLogin(String login) throws Exception {
 		List<?> list = getHibernateTemplate().find(
-				"from usuario where login=?",login);
+				"from UserAccount where login=?",login);
 		
-		return (UserAccount)list.get(0);
+		if(!list.isEmpty()) return (UserAccount)list.get(0);
+		else {
+			throw new Exception("Usuario nao encontrado");
+		}
 	}
 
     public List<UserAccount> list() {
