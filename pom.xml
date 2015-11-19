@@ -14,9 +14,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-
 	<dependencies>
-		<!-- spring -->
+
+	<!-- Spring Dependecies -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
@@ -50,6 +50,32 @@
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-orm</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+
+	<!-- Spring Security -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>4.0.3.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>4.0.3.RELEASE</version>
+	</dependency>
+
+	<!-- Spring Security JSP Taglib -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-taglibs</artifactId>
+		<version>4.0.3.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
 	
@@ -109,7 +135,7 @@
 	</dependency>
  -->
  
-<!--  	Persistence -->
+<!--  Persistence Hibernate-->
 	<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-maven-plugin</artifactId>
@@ -122,27 +148,24 @@
 		<version>5.1.36</version>
 	</dependency>
 
-
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
 	<dependency>
 		<groupId>commons-dbcp</groupId>
 		<artifactId>commons-dbcp</artifactId>
 		<version>1.4</version>
 	</dependency>
+
 	<dependency>
 		<groupId>org.mockito</groupId>
 		<artifactId>mockito-all</artifactId>
 		<version>1.10.19</version>
 	</dependency>
+
 	<dependency>
 		<groupId>org.hamcrest</groupId>
 		<artifactId>hamcrest-library</artifactId>
 		<version>1.3</version>
 	</dependency>
+
 	</dependencies>
   
 	<build>

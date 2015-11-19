@@ -1,35 +1,33 @@
 package br.poo.com.reqagile.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "USUARIO")
-public class UserAccount {
-		
+public class UserAccount implements Serializable{
+
+		private static final long serialVersionUID = 319574572298813534L;
+
 		private Integer id;
 		private String name;
 		private String login;
 		private String password;
+		private String confirmPassword;
 		private String email;
+		private boolean enable;
 
-		public UserAccount() {
-			
-		}
-		
-		public UserAccount(String name, String login, String password, String email) {
-			this.name = name;
-			this.login = login;
-			this.password = password;
-			this.email = email;
-		}
 
 		@Id
-		@GeneratedValue
-		@Column(name = "idUser", unique = true, nullable = false)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name = "userID", unique = true, nullable = false)
 		public Integer getId() {
 			return id;
 		}
@@ -74,11 +72,37 @@ public class UserAccount {
 			this.email = email;
 		}
 		
+		@Transient
+		public String getConfirmPassword() {
+			return confirmPassword;
+		}
+		
+		public void setConfirmPassword(String confirmPassword) {
+			this.confirmPassword = confirmPassword;
+		}
+		
+		@Column(name="ativo")
+		public boolean isEnable() {
+			return enable;
+		}
+		
+		public void setEnable(boolean enable) {
+			this.enable = enable;
+		}
+		
 		@Override
 		public String toString() {
 			return "User name= " + name + ", idUser= " + id
 					+ ", loginUser= " + login + "emailUser= " + email;
 		}
+		
+        @Override
+        public int hashCode() {
+              final int prime = 31;
+              int result = 1;
+              result = prime * result + ((id == null) ? 0 : id.hashCode());
+              return result;
+        }
 
 		/**
 		 * Verifica se o usuário informado existe e se a sua senha coincide com a
@@ -91,18 +115,11 @@ public class UserAccount {
 		 * @throws AccountException
 		 * 			No caso de erro na interface com o banco de dados, lança a exceção.
 		 */
-/*		public static UserAccount authenticateUser(String login, String password) throws AccountException {
-			try {
-				UserAccount	user = UserAccount.Search(login);
-				if((user != null) && user.getPassword().equals(password)) {
-					return user;
-				}else {
-					return null;
-				}
-			}catch(SQLException e) {
-				throw new AccountException("Erro no acesso ao banco de dados!");
-			}
+		public boolean authenticateUser(String password) {
+			if(!password.equals(null) && password.equals(this.password)){
+				return true;
+			}else
+				return false;
 		}
-*/
-		
+
 }

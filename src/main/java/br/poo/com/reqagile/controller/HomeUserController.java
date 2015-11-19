@@ -20,6 +20,7 @@ import br.poo.com.reqagile.service.UserAccountService;
  *
  */
 
+
 @Controller
 public class HomeUserController {
 /**
@@ -67,9 +68,11 @@ public class HomeUserController {
 	public ModelAndView start(){
 //		System.out.println("Acessando a home.jsp!");
 		List<UserAccount> listUsers = userDao.list();
+		UserAccount user = new UserAccount();
 		/*Nome da view que deseja referenciar*/
 		ModelAndView model = new ModelAndView("home");
 		model.addObject("userList", listUsers);
+		model.addObject("userLogin",user);
 		return model;
 	}
 	
@@ -101,8 +104,24 @@ public class HomeUserController {
 		return start();
 	}
 	
+	@RequestMapping(value="/autenticar", method= RequestMethod.POST)
+	public String autenticar(@ModelAttribute("userLogin") UserAccount userLogin){
+		System.out.println("****Acessando o Banco, aguardando dados!");
+		System.out.println(userLogin.getLogin());
+		UserAccount user = userService.findByLogin(userLogin.getLogin());
+		System.out.println("****Autenticando usuario, aguardando resultado!");
+		if(user != null){
+			if(user.authenticateUser(userLogin.getPassword())){
+				System.out.println("****Usuario Autenticado com sucesso!");
+				return "help";
+			}
+		}else
+			System.out.println("****Usuario nao Autenticado com sucesso!");
+			return "home";
+	}
+	
 	/**
-	 * 
+	 * Metodo responsavel por receber uma requisicao para 
 	*/
 	@RequestMapping("/cadastrado")
 	public ModelAndView newUser(){

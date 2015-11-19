@@ -1,22 +1,23 @@
 package br.poo.com.reqagile.dao;
 
-import java.util.List;
-
 import br.poo.com.reqagile.model.UserAccount;
 
-public interface UserAccountDAO {
-	void save(UserAccount user);
+/**
+ * Interface que fornece a assinatura dos metodos peculiares para
+ * classes de UserAccount que possam implementar tais metodos na
+ * persistencia.
+ * 
+ *@author Wellington Stanley
+ * */
+
+public interface UserAccountDAO extends GenericDAO<Integer, UserAccount>{
+	public UserAccount findByEmail(String userEmail);
 	
-	void update(UserAccount user);
+	public UserAccount findByLogin(String userLogin);
 	
-	void delete(UserAccount user);
+	public UserAccount findByName(String userName);
 	
-	UserAccount findById(Integer id) throws Exception;
-	
-	UserAccount findByEmail(String email) throws Exception;
-	
-	UserAccount findByLogin(String login) throws Exception;
-	
-	List<UserAccount> list();
+	public boolean isUserRegistered(String userName, String password);
+
 
 }

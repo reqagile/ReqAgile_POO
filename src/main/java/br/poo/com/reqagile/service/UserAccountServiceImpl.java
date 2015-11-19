@@ -7,37 +7,27 @@ import br.poo.com.reqagile.dao.UserAccountDAO;
 import br.poo.com.reqagile.model.UserAccount;
 
 @Service("userAccountService")
-public class UserAccountServiceImpl implements UserAccountService{
+public class UserAccountServiceImpl extends GenericServiceImplAbstract<Integer, UserAccount> 
+		implements UserAccountService{
 	
 	@Autowired
-	UserAccountDAO userDao;
+	UserAccountDAO userAccountDao;
 	
-	/*	public void setStockDao(StockDao stockDao) {
-		this.stockDao = stockDao;
-	}*/
-
-	public void save(UserAccount user) {
-		userDao.save(user);
+	public UserAccount findByEmail(String email) {
+		return userAccountDao.findByEmail(email);
 	}
 
-	public void update(UserAccount user) {
-		userDao.update(user);
+	public UserAccount findByLogin(String login) {
+		return userAccountDao.findByLogin(login);
 	}
-
-	public void delete(UserAccount user) {
-		userDao.delete(user);
+	
+	public UserAccount findByName(String name){
+		return userAccountDao.findByName(name);
 	}
-
-	public UserAccount findById(Integer id) throws Exception {
-		return userDao.findById(id);
-	}
-
-	public UserAccount findByEmail(String email) throws Exception {
-		return userDao.findByEmail(email);
-	}
-
-	public UserAccount findByLogin(String login) throws Exception {
-		return userDao.findByLogin(login);
+	
+	public boolean isUserRegistered(String userName, String password){
+		
+		return true;
 	}
 
 }

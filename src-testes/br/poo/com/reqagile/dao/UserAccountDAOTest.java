@@ -26,13 +26,29 @@ import br.poo.com.reqagile.model.UserAccount;
 @ContextConfiguration(classes={DataBaseConfigTest.class})
 @Transactional
 public class UserAccountDAOTest extends AbstractTransactionalJUnit4SpringContextTests {    	
-	UserAccount fulano = new UserAccount("fulano","fulano_login","fulano123","fulano@email.com");
-    UserAccount ciclano = new UserAccount("ciclano","ciclano_login","ciclano123","ciclano@email.com");
-    UserAccount beltrano = new UserAccount("beltrano","beltrano_login","beltrano123","beltrano@email.com");
+	UserAccount fulano = new UserAccount();
+    UserAccount ciclano = new UserAccount();
+    UserAccount beltrano = new UserAccount();
     
     @Autowired
     UserAccountDAO userAccountDAO;  
 
+    public void testCriarUsuarios(){
+    	fulano.setName("fulano");
+    	fulano.setLogin("fulano_login");
+    	fulano.setPassword("fulano123");
+    	fulano.setEmail("fulano@email.com");
+
+    	ciclano.setName("ciclano");
+    	ciclano.setLogin("ciclano_login");
+    	ciclano.setPassword("ciclano123");
+    	ciclano.setEmail("ciclano@email.com");
+ 
+    	beltrano.setName("beltrano");
+    	beltrano.setLogin("beltrano_login");
+    	beltrano.setPassword("beltrano123");
+    	beltrano.setEmail("beltrano@email.com");
+    }
     
    /**
     * Cria os tres usuarios antes de cada um dos testes
@@ -40,6 +56,7 @@ public class UserAccountDAOTest extends AbstractTransactionalJUnit4SpringContext
     @Before
     @Test
     public void testSave() {
+    	testCriarUsuarios();
     	userAccountDAO.save(fulano);
     	userAccountDAO.save(ciclano);
     	userAccountDAO.save(beltrano);

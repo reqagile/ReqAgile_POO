@@ -1,65 +1,56 @@
 package br.poo.com.reqagile.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import br.poo.com.reqagile.model.UserAccount;
 
-@Repository("userAccountDao")
-@Transactional
-public class UserAccountDAOImpl extends CustomHibernateDaoSupport implements UserAccountDAO{
+@Repository("UserAccountDAO")
+public class UserAccountDAOImpl extends GenericDAOImplAbstract<Integer, UserAccount>
+	implements UserAccountDAO{
 
-	public void save(UserAccount user) {
-		getHibernateTemplate().save(user);
+	public UserAccount findByEmail(String email) {		
+		Query query= currentSession().createQuery("from UserAccount where email=:email");
+		query.setParameter("email", email);
 		
+		return (UserAccount) query.uniqueResult();
 	}
 	
-	public void update(UserAccount user) {
-		getHibernateTemplate().update(user);
+	public UserAccount findByLogin(String login) {
+
+		Query query= currentSession().createQuery("from UserAccount where login=:login");
+		query.setParameter("login", login);
+		
+		return (UserAccount) query.uniqueResult();
 	}
 
-	public void delete(UserAccount user) {
-		getHibernateTemplate().delete(user);
+	public UserAccount findByName(String name) {
+		Query query= currentSession().createQuery("from UserAccount where name=:name");
+		query.setParameter("name", name);
+		
+		return (UserAccount) query.uniqueResult();
 		
 	}
 
-	public UserAccount findById(Integer id) throws Exception {
-		List<?> list = getHibernateTemplate().find(
-			"from UserAccount where idUser=?",id);
-				
-		if(!list.isEmpty()) return (UserAccount)list.get(0);
-			else {
-				throw new Exception("Usuario nao encontrado");
-			}
-	}
-
-	public UserAccount findByEmail(String email) throws Exception {
-		List<?> list = getHibernateTemplate().find(
-				"from UserAccount where email=?",email);
-		
-		if(!list.isEmpty()) return (UserAccount)list.get(0);
-		else {
-			throw new Exception("Usuario nao encontrado");
-		}
-	}
-
-	public UserAccount findByLogin(String login) throws Exception {
-		List<?> list = getHibernateTemplate().find(
-				"from UserAccount where login=?",login);
-		
-		if(!list.isEmpty()) return (UserAccount)list.get(0);
-		else {
-			throw new Exception("Usuario nao encontrado");
-		}
-	}
-
-    public List<UserAccount> list() {
-		@SuppressWarnings("unchecked")
-		List<UserAccount> listUser = (List<UserAccount>) getSessionFactory().getCurrentSession().
-				createCriteria(UserAccount.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-	    return listUser;
+    public boolean isUserRegistered(String userName, String password) {
+        /*You can use any character instead of 'A'. If a record is found, 
+        only single character, in this example 'A', will return from database
+        
+        Query employeeTaskQuery = currentSession().createQuery(
+                "select 'A' from Admin u where username=:username and password=:password");
+        employeeTaskQuery.setParameter("username", userName);
+        employeeTaskQuery.setParameter("password", password); */
+        return true;
     }
+ 
+/*    @Override
+    public Admin getAdmin(String username) {
+        Query query = currentSession().createQuery(
+                "from Admin " +
+                        "where username=:username");
+        query.setParameter("username", username);
+        return (Admin) query.uniqueResult();
+ 
+    }*/
+	
 }

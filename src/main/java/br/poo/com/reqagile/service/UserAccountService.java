@@ -2,18 +2,13 @@ package br.poo.com.reqagile.service;
 
 import br.poo.com.reqagile.model.UserAccount;
 
-public interface UserAccountService {
-
-	void save(UserAccount user);
+public interface UserAccountService extends GenericService<Integer, UserAccount> {
 	
-	void update(UserAccount user);
+	public UserAccount findByEmail(String userEmail);
 	
-	void delete(UserAccount user);
+	public UserAccount findByLogin(String userLogin);
 	
-	UserAccount findById(Integer id) throws Exception;
+	public UserAccount findByName(String userName);
 	
-	UserAccount findByEmail(String email) throws Exception;
-	
-	UserAccount findByLogin(String login) throws Exception;
-
+	public boolean isUserRegistered(String userName, String password);
 }
