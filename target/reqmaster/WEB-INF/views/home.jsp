@@ -31,7 +31,7 @@
                 <div class="modal-body">
                     <form class="form col-md-12 center-block">
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" placeholder="Email">
+                            <input type="text" class="form-control input-lg" placeholder="Login">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control input-lg" placeholder="Password">

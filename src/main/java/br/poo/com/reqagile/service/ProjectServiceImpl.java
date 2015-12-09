@@ -1,33 +1,40 @@
 package br.poo.com.reqagile.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.poo.com.reqagile.dao.ProjectDAO;
 import br.poo.com.reqagile.model.Project;
+import br.poo.com.reqagile.model.Requirement;
+import br.poo.com.reqagile.model.UserAccount;
 
 @Service("projectService")
-public class ProjectServiceImpl implements ProjectService {
+public class ProjectServiceImpl extends GenericServiceImplAbstract<Integer, Project>
+	implements ProjectService {
 	
 	@Autowired
 	ProjectDAO projectDAO;
 
-	public void save(Project project) {
-		projectDAO.save(project);		
-	}
-
-	public void update(Project project) {
-		projectDAO.update(project);
-	}
-
-	public void delete(Project project) {
-		projectDAO.delete(project);		
-	}
-
-	public Project findById(Integer id) throws Exception {
-		return projectDAO.findById(id);
-	}
-
 	public Project findByTitle(String title) throws Exception {
-		return projectDAO.findByTitle(title);
+		try {
+			return projectDAO.findByTitle(title);
+		} catch (Exception e) {
+			throw new Exception("Erro ao pesquisar projeto", e);
+		}
 	}
+	
+	public List<UserAccount> listTeamMembers(Integer id) throws Exception{
+		try {
+			return projectDAO.listTeamMembers(id);			
+		} catch (Exception e) {
+			throw new Exception("Erro ao pesquisar membros do projeto", e);
+		}
+	}
+	
+	public List<Requirement> listRequirement (Integer id){
+		return projectDAO.listRequirement(id);
+	}
+
+
 }

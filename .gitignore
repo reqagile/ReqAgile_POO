@@ -1,2 +1,3 @@
 target/classes/properties/database.properties
 src/main/resources/properties/database.properties
+/target/

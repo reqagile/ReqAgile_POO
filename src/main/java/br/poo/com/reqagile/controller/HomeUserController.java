@@ -82,8 +82,8 @@ public class HomeUserController {
 	 * uma view e seus recursos. Neste caso o recurso eh o objeto usuario
 	 * a ser cadastrado. Retorna o nome da jsp a ser exibida.
 	*/
-	@RequestMapping(value="/criar_conta", method= RequestMethod.GET)
-	public String newUser(ModelMap mMap){
+	@RequestMapping(value="/cadastro", method= RequestMethod.GET)
+	public String cadastro(ModelMap mMap){
 		mMap.put("user", new UserAccount());
 		System.out.println("****Acessando a criarConta, aguardando dados!");
 		return "criar_conta";
@@ -95,9 +95,8 @@ public class HomeUserController {
 	 * o usuario preenchido e que sera persistido no banco.
 	 * Retorna para a home page atraves do metodo start().
 	*/
-	@RequestMapping(value="/criar_conta", method= RequestMethod.POST)
-	public ModelAndView newUser(@ModelAttribute(value="user") UserAccount user){
-//		ModelAndView map = new ModelAndView("");
+	@RequestMapping(value="/cadastrar", method= RequestMethod.POST)
+	public ModelAndView cadastrar(@ModelAttribute(value="user") UserAccount user){
 		userService.save(user);
 		System.out.println("****Dados aguardados cadastrados!");
 		

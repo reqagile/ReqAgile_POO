@@ -11,12 +11,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USUARIO_ROLES")
+@Table(name="USER_ROLES")
 public class UserRoles {
 	
 	private Integer id;
 	private UserAccount user;
 	private String role;
+	private Project project;
 
 /*	CREATE TABLE `user_roles` (  
 			  `USER_ROLE_ID` int(10) unsigned NOT NULL,  
@@ -45,6 +46,16 @@ public class UserRoles {
 	
 	public void setUser(UserAccount user) {
 		this.user = user;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "projectID")
+	public Project getProject() {
+		return project;
+	}
+	
+	public void setProject(Project project) {
+		this.project = project;
 	}
 	
 	@Column(name = "role", unique = true, nullable = false, columnDefinition = "varchar(255) default 'ROLE_USER'")

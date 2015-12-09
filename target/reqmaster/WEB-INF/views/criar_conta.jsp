@@ -35,27 +35,27 @@
 					</h1>
 				</div>
 				<div class="modal-body">
-					<s:form class="form col-md-12 center-block" method="post" commandName="user" action="criar_conta"  >
+					<s:form class="form col-md-12 center-block" method="post" commandName="user" action="cadastrar"  >
 
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="name" path="name" 
-							placeholder="Digite seu nome">
+							<s:input type="text" class="form-control input-lg" id="name" path="name" 
+							placeholder="Digite seu nome" />
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="email" path="email" 
-							placeholder="Digite seu Email">
+							<s:input type="text" class="form-control input-lg" id="email" path="email" 
+							placeholder="Digite seu Email"/>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="login" path="login" 
-							placeholder="Informe seu login de usuário">
+							<s:input type="text" class="form-control input-lg" id="login" path="login" 
+							placeholder="Informe seu login de usuário" />
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control input-lg" id="senha" path="password"
-							placeholder="Digite sua senha">
+							<s:input type="password" class="form-control input-lg" id="senha" path="password"
+							placeholder="Digite sua senha" />
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control input-lg" id="senha2"
-							placeholder="Confirme sua senha">
+							<s:input type="password" class="form-control input-lg" id="senha2" path="confirmPassword"
+							placeholder="Confirme sua senha" />
 						</div>
 						<div class="form-group">
 							<button class="btn btn-primary btn-lg btn-block">Registrar</button>
