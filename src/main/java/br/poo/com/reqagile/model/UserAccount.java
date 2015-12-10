@@ -45,7 +45,7 @@ public class UserAccount implements Serializable{
 			this.login = login;
 		}
 		
-		@Column(name = "senha", unique = true, nullable = false, length = 20)
+		@Column(name = "senha", nullable = false, length = 20)
 		public String getPassword() {
 			return password;
 		}
@@ -54,7 +54,7 @@ public class UserAccount implements Serializable{
 			this.password = password;
 		}
 		
-		@Column(name = "nome", unique = true, nullable = false)
+		@Column(name = "nome", nullable = false)
 		public String getName() {
 			return name;
 		}

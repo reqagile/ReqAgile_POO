@@ -2,14 +2,19 @@ package br.poo.com.reqagile.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.UrlFilenameViewController;
 
 import br.poo.com.reqagile.dao.UserAccountDAO;
 import br.poo.com.reqagile.model.UserAccount;
@@ -22,7 +27,8 @@ import br.poo.com.reqagile.service.UserAccountService;
 
 
 @Controller
-public class HomeUserController {
+//@RequestMapping(name="/")
+public class HomeUserController{
 /**
  * Requests for HTTP
  * 
@@ -50,12 +56,22 @@ public class HomeUserController {
 	 * 
 	*/
 	@RequestMapping(value={"/", "/index"},method = RequestMethod.GET)
-	public ModelAndView index(){
+	public String index(){
 		System.out.println("Acessando a index.jsp! Redirecionando para a home.jsp");
 /*		for (UserAccount userAccount : users) {
 			System.out.println("Nome: " + userAccount.getName() + "Id: " + userAccount.getId());
 		}*/
-		return start();
+		return "redirect:home";
+	}
+	
+	@RequestMapping(value="/logout",method = RequestMethod.GET)
+	public String logout(HttpSession session){
+		System.out.println("Fazendo logout! Redirecionando para a home.jsp");
+/*		for (UserAccount userAccount : users) {
+			System.out.println("Nome: " + userAccount.getName() + "Id: " + userAccount.getId());
+		}*/
+		session.invalidate();
+		return "redirect:home";
 	}
 
 	
@@ -70,7 +86,7 @@ public class HomeUserController {
 		List<UserAccount> listUsers = userDao.list();
 		UserAccount user = new UserAccount();
 		/*Nome da view que deseja referenciar*/
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView model = new ModelAndView("/home");
 		model.addObject("userList", listUsers);
 		model.addObject("userLogin",user);
 		return model;
@@ -112,11 +128,12 @@ public class HomeUserController {
 		if(user != null){
 			if(user.authenticateUser(userLogin.getPassword())){
 				System.out.println("****Usuario Autenticado com sucesso!");
-				return "help";
+				
+				return "redirect:board";
 			}
 		}else
 			System.out.println("****Usuario nao Autenticado com sucesso!");
-			return "home";
+			return "redirect:home";
 	}
 	
 	/**
@@ -133,11 +150,11 @@ public class HomeUserController {
 	}
 
 	
-	@RequestMapping(value="help", method= RequestMethod.GET)
+	@RequestMapping(value="/board", method= RequestMethod.GET)
 	public String help(){
 //		mMap.put("user", new UserAccount());
 		System.out.println("****Acessando a Help.jsp!");
-		return "help";
+		return "board";
 	}
 	
 	/*

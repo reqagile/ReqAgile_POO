@@ -2,7 +2,6 @@ package br.poo.com.reqagile.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,16 +29,7 @@ public class Requirement {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	@ManyToOne
-	public Project getProject() {
-		return project;
-	}
-	
-	public void setProject(Project project) {
-		this.project = project;
-	}
-	
+		
 	@Column(name="name",unique=true,nullable=false)
 	public String getName() {
 		return name;
@@ -57,6 +47,17 @@ public class Requirement {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="projectID", nullable=false)
+	public Project getProject() {
+		return project;
+	}
+	
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
 	
 	@ManyToOne
     @JoinColumn(name="requirementTypeID", nullable=false)

@@ -1,7 +1,9 @@
 package br.poo.com.reqagile.model;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,18 +14,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PROJECT")
-public class Project {
+public class Project implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1973760864305080350L;
+	
 	
 	private Integer id;
 	private String title;
 	private String description;
 	private List<Requirement> requirements;
 //	private List<UserAccount> users;
-	
-	public Project(String title, String description) {
-		this.title = title;
-		this.description = description;
-	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +57,7 @@ public class Project {
 		this.description = description;
 	}
 	
-	@OneToMany(mappedBy="project")
+	@OneToMany(mappedBy = "project", targetEntity = Requirement.class, cascade = CascadeType.ALL)
 	public List<Requirement> getRequirements() {
 		return requirements;
 	}

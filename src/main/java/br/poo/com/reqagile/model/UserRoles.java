@@ -58,7 +58,7 @@ public class UserRoles {
 		this.project = project;
 	}
 	
-	@Column(name = "role", unique = true, nullable = false, columnDefinition = "varchar(255) default 'ROLE_USER'")
+	@Column(name = "role", unique = true, nullable = false, columnDefinition = "varchar(255) default 'USER'")
 	public String getRole() {
 		return role;
 	}

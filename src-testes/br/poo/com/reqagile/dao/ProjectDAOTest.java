@@ -27,9 +27,9 @@ import br.poo.com.reqagile.model.Project;
 @Transactional
 public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTests {    
 	
-	Project reqagile = new Project("reqagile","descricao");
-	Project midas = new Project("midas","descricao");
-	Project game = new Project("game","descricao");
+	Project reqagile = new Project();
+	Project midas = new Project();
+	Project game = new Project();
 	
 	@Autowired
 	ProjectDAO projectDao;
@@ -37,6 +37,12 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
 	@Before
     @Test
     public void testSave() {
+		reqagile.setTitle("REQ");
+		reqagile.setDescription("Projeto Req");
+		midas.setTitle("MIDAS");
+		midas.setDescription("Projeto Midas");
+		game.setTitle("GAME");
+		game.setDescription("Projeto GAME");
     	projectDao.save(reqagile);
     	projectDao.save(midas);
     	projectDao.save(game);
@@ -86,9 +92,9 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
 
     @Test
     public void testFindByTitle() throws Exception {
-    	assertEquals(reqagile.toString(),projectDao.findByTitle("reqagile").toString());
-        assertEquals(midas.toString(),projectDao.findByTitle("midas").toString());
-        assertEquals(game.toString(),projectDao.findByTitle("game").toString());
+    	assertEquals(reqagile.toString(),projectDao.findByTitle("REQ").toString());
+        assertEquals(midas.toString(),projectDao.findByTitle("MIDAS").toString());
+        assertEquals(game.toString(),projectDao.findByTitle("GAME").toString());
         
         try {
         	projectDao.findByTitle("titulo_que_nao_existe");
@@ -99,9 +105,9 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
     
     @Test
     public void testUpdateTitle() throws Exception {
-    	assertEquals(reqagile.toString(),projectDao.findByTitle("reqagile").toString());
-        assertEquals(midas.toString(),projectDao.findByTitle("midas").toString());
-        assertEquals(game.toString(),projectDao.findByTitle("game").toString());
+    	assertEquals(reqagile.toString(),projectDao.findByTitle("REQ").toString());
+        assertEquals(midas.toString(),projectDao.findByTitle("MIDAS").toString());
+        assertEquals(game.toString(),projectDao.findByTitle("GAME").toString());
     	
     	reqagile.setTitle("novo_reqagile");
     	midas.setTitle("novo_midas");
