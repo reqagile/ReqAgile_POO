@@ -24,9 +24,17 @@ public class ProjectServiceImpl extends GenericServiceImplAbstract<Integer, Proj
 		}
 	}
 	
-	public List<UserAccount> listTeamMembers(Integer id) throws Exception{
+	public List<Project> list() throws Exception{
 		try {
-			return projectDAO.listTeamMembers(id);			
+			return projectDAO.list();
+		} catch (Exception e) {
+			throw new Exception("Erro ao pesquisar projetos", e);
+		}
+	}
+	
+	public List<UserAccount> listProjectMembers(Integer id) throws Exception{
+		try {
+			return projectDAO.listProjectMembers(id);			
 		} catch (Exception e) {
 			throw new Exception("Erro ao pesquisar membros do projeto", e);
 		}

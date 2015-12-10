@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -48,30 +49,23 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
     	projectDao.save(game);
     }
 	
+	@Rollback
 	@After
     @Test
     public void testDelete() throws Exception {
-       projectDao.delete(reqagile);
-       projectDao.delete(midas);
-       projectDao.delete(game);
+		int idReq, idMidas, idGame;
+		idReq = reqagile.getId();
+		idMidas = midas.getId();
+		idGame = game.getId();
+		projectDao.delete(reqagile);
+		projectDao.delete(midas);
+		projectDao.delete(game);
        
-       try {
-       		projectDao.findById(reqagile.getId());
-       } catch(Exception e) {
-       		System.out.println("projeto de id = " + reqagile.getId()+ " apagado com sucesso");
-       }
+       	assertNull(projectDao.findById(idReq));
        
-       try {
-      		projectDao.findById(midas.getId());
-      } catch(Exception e) {
-      		System.out.println("projeto de id = " + midas.getId()+ " apagado com sucesso");
-      }
-       
-       try {
-      		projectDao.findById(game.getId());
-      } catch(Exception e) {
-      		System.out.println("projeto de id = " + game.getId()+ " apagado com sucesso");
-      }
+      	assertNull(projectDao.findById(idMidas));
+      	
+      	assertNull(projectDao.findById(idGame));
     }
 	
 	@Test 
@@ -84,7 +78,7 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
         assertEquals(game.toString(),projectDao.findById(game.getId()).toString());
 
         try {
-        	projectDao.findById(1001);
+        	assertNotNull(projectDao.findById(1001));
         } catch(Exception e) {
         	System.out.println("id nao existe");
         }
@@ -122,19 +116,19 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
         assertEquals(game.toString(),projectDao.findByTitle("novo_game").toString());
         
         try {
-        	projectDao.findByTitle("reqagile");
+        	assertNull(projectDao.findByTitle("reqagile"));
         } catch(Exception e) {
         	System.out.println("Titulo nao existe");
         }
         
         try {
-        	projectDao.findByTitle("midas");
+        	assertNull(projectDao.findByTitle("midas"));
         } catch(Exception e) {
         	System.out.println("Titulo nao existe");
         }
         
         try {
-        	projectDao.findByTitle("game");
+        	assertNotNull(projectDao.findByTitle("game"));
         } catch(Exception e) {
         	System.out.println("Titulo nao existe");
         }

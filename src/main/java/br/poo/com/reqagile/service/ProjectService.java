@@ -7,10 +7,12 @@ import br.poo.com.reqagile.model.UserAccount;
 
 public interface ProjectService extends GenericService<Integer, Project>{
 	
-	Project findByTitle(String title) throws Exception;
+	public Project findByTitle(String title) throws Exception;
 	
-	List<UserAccount> listTeamMembers(Integer id) throws Exception;
+	public List<Project> list() throws Exception;
 	
-	List<Requirement> listRequirement (Integer id);
+	public List<UserAccount> listProjectMembers(Integer projectID) throws Exception;
+	
+	public List<Requirement> listRequirement (Integer projectID);
 	
 }
