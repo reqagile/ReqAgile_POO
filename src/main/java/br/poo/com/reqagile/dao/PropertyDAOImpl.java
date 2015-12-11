@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import br.poo.com.reqagile.model.Property;
 
 @Repository("PropertyDAO")
-public class PropertyDAOImpl extends GenericDAOImplAbstract<Integer, Property> {
+public class PropertyDAOImpl extends GenericDAOImplAbstract<Integer, Property> implements PropretyDAO {
 	
 }

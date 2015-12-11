@@ -45,7 +45,6 @@ public abstract class GenericDAOImplAbstract<PK extends Serializable,T> extends 
 		getHibernateTemplate().update(entity);
 	}
 	
-	
 /*    public List<UserAccount> list() {
 		@SuppressWarnings("unchecked")
 		List<UserAccount> listUser = (List<UserAccount>) getSessionFactory().getCurrentSession().
