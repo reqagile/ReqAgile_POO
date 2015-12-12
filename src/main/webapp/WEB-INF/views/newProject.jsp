@@ -1,6 +1,4 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 	<head>
@@ -10,23 +8,23 @@
 		<link href="${minCss}" rel="stylesheet"/>
 		<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" /></script>
 		
-		<!--<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	
 	</head>
 	<body>
 		<jsp:include page="fragments/header.jsp"></jsp:include>
 		<div class="container"  style="padding-top: 90px;">
-	      <form class="form-horizontal" method="post" action="cadastrado" role="form" modelAttribute = "user"
+	      <form class="form-horizontal" method="post" action="newProject" role="form" modelAttribute = "user"
 	                    method = "post">
 
 	                        <div class="form-group">
 	                            <label for="projectName" class="col-sm-3 control-label">Project Name: </label>
 	                            <div class="col-sm-8">
-	                                <input type="text" class="form-control" id="nomeProjeto" name="nomeProjetp"
+	                                <input type="text" class="form-control" id="newProject" name="newProject"
 	                                    placeholder="Projeto" />
 	                            </div>
 	                        </div>
@@ -50,9 +48,10 @@
 										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Members
 										<span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Membro</a></li>
-											<li><a href="#">Nome</a></li>
-											<li><a href="#">Nome2</a></li>
+											
+											<li><a href="#">${user.id}</a></li>
+											<li><a href="#">${user.id}</a></li>
+										
 										</ul>
 									</div>
 	                        </div>
@@ -70,12 +69,12 @@
 									</div>
 	                        </div>
 							<div class="form-group">
-							<span><a href="./" style="font-size: 15px;">Create</a></span>
-						</div>
+							   <button class="btn btn-primary btn-lg btn-block" href="board">Create</button>
+		       				</div>
 	                    </form>
 	  	</div>
-	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" /></script>
-	< <jsp:include page="fragments/footer.jsp"></jsp:include>
-	 #{include '_include/footer.html' /} >
+	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
+	<%-- <jsp:include page="fragments/footer.jsp"></jsp:include>
+	 #{include '_include/footer.html' /} --%>
 	</body>
 </html>
