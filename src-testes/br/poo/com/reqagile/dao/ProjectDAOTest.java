@@ -78,7 +78,7 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
         assertEquals(game.toString(),projectDao.findById(game.getId()).toString());
 
         try {
-        	assertNotNull(projectDao.findById(1001));
+        	assertNull(projectDao.findById(1001));
         } catch(Exception e) {
         	System.out.println("id nao existe");
         }
@@ -128,7 +128,7 @@ public class ProjectDAOTest extends AbstractTransactionalJUnit4SpringContextTest
         }
         
         try {
-        	assertNotNull(projectDao.findByTitle("game"));
+        	assertNull(projectDao.findByTitle("game"));
         } catch(Exception e) {
         	System.out.println("Titulo nao existe");
         }
