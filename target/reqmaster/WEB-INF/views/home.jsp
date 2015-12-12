@@ -1,4 +1,3 @@
-<%@taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -30,21 +29,21 @@
                     <h1 class="text-center"><img class="logo" src="resources/images/logo3.png"></h1>
                 </div>
                 <div class="modal-body">
-                    <s:form class="form col-md-12 center-block" commandName="userLogin" action="autenticar">
+                    <form class="form col-md-12 center-block">
                         <div class="form-group">
-   							<s:input type="text" class="form-control input-lg" id="login" path="login" placeholder="Login" />
+                            <input type="text" class="form-control input-lg" placeholder="Login">
                         </div>
                         <div class="form-group">
-                            <s:input type="password" class="form-control input-lg" id="password" path="password" placeholder="Password" />
+                            <input type="password" class="form-control input-lg" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary btn-lg btn-block" > Sign In</button>
-<!--                            <span class="pull-right">
-                             	<a href= "./register.jsp" > Register Teste</a></span> -->
+                            <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                            <span class="pull-right">
+<!--                             	<a href= "./register.jsp" > Register Teste</a></span> -->
                             <span>
 	                            <a href= "<c:url value="help" />" > Need help?</a></span>
                         </div>
-                    </s:form>
+                    </form>
               </div>
               <div class="modal-footer">
 					

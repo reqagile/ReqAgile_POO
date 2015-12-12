@@ -72,7 +72,7 @@
 				            	<i class="glyphicon glyphicon-plus"></i>
 				            	<br> New Project
 				       		</a>
-					        <a href="requirement" class="btn btn-primary col-sm-4" title="New Requirement">
+					        <a href="#" class="btn btn-primary col-sm-4" title="New Requirement">
 					            <i class="glyphicon glyphicon-plus"></i>
 					            <i class="glyphicon glyphicon-list"></i>
 				    	        <br> Requirement
