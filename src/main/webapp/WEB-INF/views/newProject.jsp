@@ -69,10 +69,13 @@
 										</ul>
 									</div>
 	                        </div>
+							<div class="form-group">
+							<span><a href="./" style="font-size: 15px;">Create</a></span>
+						</div>
 	                    </form>
 	  	</div>
-	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
-	<%-- <jsp:include page="fragments/footer.jsp"></jsp:include>
-	 #{include '_include/footer.html' /} --%>
+	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" /></script>
+	< <jsp:include page="fragments/footer.jsp"></jsp:include>
+	 #{include '_include/footer.html' /} >
 	</body>
 </html>
