@@ -1,11 +1,16 @@
 package br.poo.com.reqagile.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import br.poo.com.reqagile.model.Project;
 import br.poo.com.reqagile.model.UserAccount;
 
 @Repository("UserAccountDAO")
+@Transactional
 public class UserAccountDAOImpl extends GenericDAOImplAbstract<Integer, UserAccount>
 	implements UserAccountDAO{
 
@@ -42,6 +47,30 @@ public class UserAccountDAOImpl extends GenericDAOImplAbstract<Integer, UserAcco
         employeeTaskQuery.setParameter("password", password); */
         return true;
     }
+    
+    @Override
+	@SuppressWarnings("unchecked")
+	public List<UserAccount> list() {
+    	return currentSession().createCriteria(daoType).list();
+	}
+    
+
+	/**
+	 * 
+	 * @param id do usuario
+	 * @return uma lista com os projetos que o usuario faz parte
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Project> listProject(Integer id) throws Exception {
+		List<?> projectList = getHibernateTemplate().find("pj from UserRoles ur, "
+				+ "Project pj "
+				+ "where ur.project = pj.id "
+				+ "and ur.project = ?",id);
+		
+		
+		return (List<Project>) projectList;
+	}
  
 /*    @Override
     public Admin getAdmin(String username) {

@@ -4,6 +4,6 @@ import br.poo.com.reqagile.model.Requirement;
 
 public interface RequirementService extends GenericService<Integer, Requirement>{
 
-	Requirement findByTitle(String nome) throws Exception;
+	public Requirement findByTitle(String nome) throws Exception;
 
 }

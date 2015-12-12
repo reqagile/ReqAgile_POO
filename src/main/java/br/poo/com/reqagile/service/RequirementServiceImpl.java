@@ -10,7 +10,6 @@ public class RequirementServiceImpl extends GenericServiceImplAbstract<Integer, 
 	@Autowired
 	RequirementDAO requirementDAO;
 
-	@Override
 	public Requirement findByTitle(String nome) throws Exception {
 		try {
 			return requirementDAO.findByName(nome);			
