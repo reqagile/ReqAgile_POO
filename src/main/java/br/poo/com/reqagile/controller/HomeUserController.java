@@ -156,7 +156,51 @@ public class HomeUserController{
 		System.out.println("****Acessando a Help.jsp!");
 		return "board";
 	}
+	@RequestMapping(value="/newProject", method= RequestMethod.GET)
+	public String newProject(){
+//		mMap.put("user", new UserAccount());
+		//List<UserAccount> listUsers = userDao.list();
+		//UserAccount user = new UserAccount();
+		/*Nome da view que deseja referenciar*/
+		//ModelAndView newProject = new ModelAndView("newProject");
+		
+		System.out.println("****Acessando a newProject.jsp!");
+		return "newProject";
+	}
 	
+	@RequestMapping(value="/newRequirement", method= RequestMethod.GET)
+	public String newRequirement(){
+//		mMap.put("user", new UserAccount());
+		//List<UserAccount> listUsers = userDao.list();
+		//UserAccount user = new UserAccount();
+		/*Nome da view que deseja referenciar*/
+		//ModelAndView newProject = new ModelAndView("newProject");
+		
+		System.out.println("****Acessando a requirement.jsp!");
+		return "newRequirement";
+	}
+	@RequestMapping(value="/newProperty", method= RequestMethod.GET)
+	public String newProperty(){
+//		mMap.put("user", new UserAccount());
+		//List<UserAccount> listUsers = userDao.list();
+		//UserAccount user = new UserAccount();
+		/*Nome da view que deseja referenciar*/
+		//ModelAndView newProject = new ModelAndView("newProject");
+		
+		System.out.println("****Acessando a property.jsp!");
+		return "newProperty";
+	}
+	@RequestMapping(value="/typeRequirement", method= RequestMethod.GET)
+	public String newTypeRequirement(){
+//		mMap.put("user", new UserAccount());
+		//List<UserAccount> listUsers = userDao.list();
+		//UserAccount user = new UserAccount();
+		/*Nome da view que deseja referenciar*/
+		//ModelAndView newProject = new ModelAndView("newProject");
+		
+		System.out.println("****Acessando a typeRequirement.jsp!");
+		return "typeRequirement";
+	}
 	/*
 	@RequestMapping(value="criar_conta", method= RequestMethod.GET)
 	public String newUser(ModelMap mMap){

@@ -18,23 +18,24 @@
 	<body>
 		<jsp:include page="fragments/header.jsp"></jsp:include>
 		<div class="container"  style="padding-top: 90px;">
-	      <form class="form-horizontal" method="post" action="newProject" role="form" modelAttribute = "user"
+	      <form class="form-horizontal" method="post" action="property" role="form" modelAttribute = "user"
 	                    method = "post">
 
 	                        <div class="form-group">
-	                            <label for="projectName" class="col-sm-3 control-label">Requirement: </label>
+	                            <label for="propertyName" class="col-sm-3 control-label">Property Name: </label>
 	                            <div class="col-sm-8">
-	                                <input type="text" class="form-control" id="requeriment" name="requirement"
-	                                    placeholder="Requerements" />
+	                                <input type="text" class="form-control" id="property" name="property"
+	                                    placeholder="Property" />
 	                            </div>
 	                        </div>
+							
 	                         <div class="form-group">
       							<label for="comment">Comment:</label>
       							<textarea class="form-control" rows="5" id="comment"></textarea>
     						</div>
-  		
+    						 
 							<div class="form-group">
-							   <button class="btn btn-primary btn-lg btn-block" href="board">Add</button>
+							   <button class="btn btn-primary btn-lg btn-block" href="board">Insert</button>
 		       				</div>
 	                   	</form>
 	  	</div>

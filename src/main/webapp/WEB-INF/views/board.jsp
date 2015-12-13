@@ -72,17 +72,17 @@
 				            	<i class="glyphicon glyphicon-plus"></i>
 				            	<br> New Project
 				       		</a>
-					        <a href="requirement" class="btn btn-primary col-sm-4" title="New Requirement">
+					        <a href="newRequirement" class="btn btn-primary col-sm-4" title="New Requirement">
 					            <i class="glyphicon glyphicon-plus"></i>
 					            <i class="glyphicon glyphicon-list"></i>
 				    	        <br> Requirement
 				        	</a>
-				        	<a href="#" class="btn btn-primary col-sm-3" title="New Requirement Type">
+				        	<a href="typeRequirement" class="btn btn-primary col-sm-3" title="New Requirement Type">
 					            <i class="glyphicon glyphicon-plus"></i>
 				            	<i class="glyphicon glyphicon-book"></i>
 				            	<br> Type
 				        	</a>
-				        	<a href="#" class="btn btn-primary col-sm-3" title="New Property">
+				        	<a href="newProperty" class="btn btn-primary col-sm-3" title="New Property">
 					        	<i class="glyphicon glyphicon-plus"></i>
 				            	<i class="glyphicon glyphicon-list-alt"></i>
 				            	<br> Property
