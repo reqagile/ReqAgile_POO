@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 
 	
 	</head>
@@ -24,7 +24,7 @@
 	                        <div class="form-group">
 	                            <label for="projectName" class="col-sm-3 control-label">Project Name: </label>
 	                            <div class="col-sm-8">
-	                                <input type="text" class="form-control" id="newProject" name="newProject"
+	                                <input type="text" class="form-control" id="nomeProjeto" name="nomeProjetp"
 	                                    placeholder="Projeto" />
 	                            </div>
 	                        </div>
@@ -48,10 +48,19 @@
 										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Members
 										<span class="caret"></span></button>
 										<ul class="dropdown-menu">
-											
+											<c:forEach var="user" items="${userList}" varStatus="status">
+											<li><td href="#">${user.id}</td></li>
 											<li><a href="#">${user.id}</a></li>
-											<li><a href="#">${user.id}</a></li>
-										
+											</c:forEach>
+											<c:forEach var="user" items="${userList}" varStatus="status">
+								<tr>
+									<td>${user.id}</td>
+									<td>${user.name}</td>
+									<td>${user.email}</td>
+									<td>${user.login}</td>
+									<td>${user.password}</td>
+								</tr>
+							</c:forEach>
 										</ul>
 									</div>
 	                        </div>

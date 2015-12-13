@@ -11,7 +11,7 @@ import br.poo.com.reqagile.model.Requirement;
  * */
 public interface RequirementDAO extends GenericDAO<Integer, Requirement> {
 
-	Requirement findByName(String nome) throws Exception;
+	public Requirement findByName(String nome) throws Exception;
 	
 	
 }

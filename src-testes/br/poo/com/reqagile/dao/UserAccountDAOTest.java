@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -66,29 +68,34 @@ public class UserAccountDAOTest extends AbstractTransactionalJUnit4SpringContext
      * Deleta os usuarios criados depois de cada um dos testes e entao testa se consegue encontra-los
      * por meio de seus ids
      */
+    @Rollback
     @After
     @Test
     public void testDelete() throws Exception {
-       userAccountDAO.delete(fulano);
-       userAccountDAO.delete(ciclano);
-       userAccountDAO.delete(beltrano);
+    	int idFul, idCil, idBel;
+		idFul = fulano.getId();
+		idCil = ciclano.getId();
+		idBel = beltrano.getId();
+		userAccountDAO.delete(fulano);
+		userAccountDAO.delete(ciclano);
+		userAccountDAO.delete(beltrano);
        
        try {
-       		userAccountDAO.findById(fulano.getId());
+       		assertNull(userAccountDAO.findById(idFul));
        } catch(Exception e) {
-       		System.out.println("usuario de id = " + fulano.getId()+ " apagado com sucesso");
+       		System.out.println("usuario de id = " + idFul + " apagado com sucesso");
        }
        
        try {
-      		userAccountDAO.findById(ciclano.getId());
+      		assertNull(userAccountDAO.findById(idCil));
       } catch(Exception e) {
-      		System.out.println("usuario de id = " + ciclano.getId()+ " apagado com sucesso");
+      		System.out.println("usuario de id = " + idCil + " apagado com sucesso");
       }
        
        try {
-      		userAccountDAO.findById(beltrano.getId());
+      		assertNull(userAccountDAO.findById(idBel));
       } catch(Exception e) {
-      		System.out.println("usuario de id = " + beltrano.getId()+ " apagado com sucesso");
+      		System.out.println("usuario de id = " + idBel + " apagado com sucesso");
       }
     }
     
@@ -115,7 +122,7 @@ public class UserAccountDAOTest extends AbstractTransactionalJUnit4SpringContext
         assertEquals(beltrano.toString(),userAccountDAO.findByEmail("beltrano@email.com").toString());
         
         try {
-        	userAccountDAO.findByEmail("email_que_nao_existe");
+        	assertNull(userAccountDAO.findByEmail("email_que_nao_existe"));
         } catch(Exception e) {
         	System.out.println("email nao existe");
         }
@@ -157,19 +164,19 @@ public class UserAccountDAOTest extends AbstractTransactionalJUnit4SpringContext
         assertEquals(beltrano.toString(),userAccountDAO.findByEmail("novo_beltrano@email.com").toString());
         
         try {
-        	userAccountDAO.findByEmail("fulano@email.com");
+        	assertNull(userAccountDAO.findByEmail("fulano@email.com"));
         } catch(Exception e) {
         	System.out.println("email nao existe");
         }
         
         try {
-        	userAccountDAO.findByEmail("ciclano@email.com");
+        	assertNull(userAccountDAO.findByEmail("ciclano@email.com"));
         } catch(Exception e) {
         	System.out.println("email nao existe");
         }
         
         try {
-        	userAccountDAO.findByEmail("beltrano@email.com");
+        	assertNull(userAccountDAO.findByEmail("beltrano@email.com"));
         } catch(Exception e) {
         	System.out.println("email nao existe");
         }
@@ -196,19 +203,19 @@ public class UserAccountDAOTest extends AbstractTransactionalJUnit4SpringContext
         assertEquals(beltrano.toString(),userAccountDAO.findByLogin("novo_beltrano_login").toString());
         
         try {
-        	userAccountDAO.findByLogin("fulano_login");
+        	assertNull(userAccountDAO.findByLogin("fulano_login"));
         } catch(Exception e) {
         	System.out.println("login nao existe");
         }
         
         try {
-        	userAccountDAO.findByLogin("ciclano_login");
+        	assertNull(userAccountDAO.findByLogin("ciclano_login"));
         } catch(Exception e) {
         	System.out.println("login nao existe");
         }
         
         try {
-        	userAccountDAO.findByLogin("beltrano_login");
+        	assertNull(userAccountDAO.findByLogin("beltrano_login"));
         } catch(Exception e) {
         	System.out.println("login nao existe");
         }

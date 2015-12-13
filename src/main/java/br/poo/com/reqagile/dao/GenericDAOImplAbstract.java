@@ -2,7 +2,6 @@ package br.poo.com.reqagile.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,11 +44,6 @@ public abstract class GenericDAOImplAbstract<PK extends Serializable,T> extends 
     public void update(T entity) {
 		getHibernateTemplate().update(entity);
 	}
-    
-    @SuppressWarnings("unchecked")
-	public List<T> list(){
-    	return currentSession().createCriteria(daoType).list();
-    }
 	
 /*    public List<UserAccount> list() {
 		@SuppressWarnings("unchecked")

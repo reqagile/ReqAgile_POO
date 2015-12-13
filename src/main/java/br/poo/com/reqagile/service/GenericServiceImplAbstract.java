@@ -1,7 +1,5 @@
 package br.poo.com.reqagile.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -30,10 +28,6 @@ public abstract class GenericServiceImplAbstract<PK,T> implements GenericService
     
     public T findById(PK id) {
     	return genericDao.findById(id);
-    }
-
-    public List<T> list() {
-        return genericDao.list();
     }
 
 }

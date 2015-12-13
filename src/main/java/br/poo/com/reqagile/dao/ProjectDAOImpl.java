@@ -27,6 +27,12 @@ public class ProjectDAOImpl extends GenericDAOImplAbstract<Integer, Project> imp
 			return (Project) query.uniqueResult();
 			
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Project> list() {
+    	return currentSession().createCriteria(daoType).list();
+	}
 
 	/**
 	 * 
@@ -35,7 +41,7 @@ public class ProjectDAOImpl extends GenericDAOImplAbstract<Integer, Project> imp
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public List<UserAccount> listTeamMembers(Integer id) throws Exception {
+	public List<UserAccount> listProjectMembers(Integer id) throws Exception {
 		List<?> userAccountIdList = getHibernateTemplate().find("us from UserRoles ur, "
 				+ "User us "
 				+ "where ur.user = us.id "

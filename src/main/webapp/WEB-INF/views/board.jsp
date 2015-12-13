@@ -72,7 +72,11 @@
 				            	<i class="glyphicon glyphicon-plus"></i>
 				            	<br> New Project
 				       		</a>
+<<<<<<< HEAD
 					        <a href="newRequirement" class="btn btn-primary col-sm-4" title="New Requirement">
+=======
+					        <a href="#" class="btn btn-primary col-sm-4" title="New Requirement">
+>>>>>>> 53a9df6a7cd638638a6b4ad7dd28cfb18719735e
 					            <i class="glyphicon glyphicon-plus"></i>
 					            <i class="glyphicon glyphicon-list"></i>
 				    	        <br> Requirement
